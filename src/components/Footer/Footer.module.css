@@ -1,0 +1,157 @@
+.footer {
+  padding-top: var(--space-3xl);
+  background: var(--color-plum);
+  color: var(--color-on-dark);
+}
+
+.footer a {
+  color: var(--color-on-dark);
+}
+
+.footer a:hover {
+  color: #fff;
+}
+
+.footer :focus-visible {
+  outline-color: var(--color-gold);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.brandBlock {
+  display: grid;
+  align-content: start;
+  gap: var(--space-xs);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  line-height: 1.15;
+}
+
+.muted {
+  color: var(--color-on-dark-muted);
+}
+
+.heading {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.list {
+  list-style: none;
+  display: grid;
+}
+
+.list a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  text-decoration: none;
+}
+
+.credits {
+  padding-block: var(--space-lg);
+  border-top: 1px solid rgb(199 154 92 / 0.35);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--color-on-dark-muted);
+}
+
+.credits a {
+  color: var(--color-on-dark-muted);
+}
+
+.bottom {
+  padding-block: var(--space-lg);
+  border-top: 1px solid rgb(248 244 234 / 0.12);
+  font-size: var(--text-sm);
+  color: var(--color-on-dark-muted);
+}
+
+@media (min-width: 48rem) {
+  .grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+  }
+}
+
+/* ---------- frase de encerramento com cacho ---------- */
+
+.hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+  border-bottom: 1px solid rgb(199 154 92 / 0.35);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.2rem + 6vw, 6rem);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--color-on-dark);
+}
+
+.wordmark em {
+  display: block;
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-gold);
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold)) no-repeat left / 0% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: background-size 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* hovering the closing line fills the outline with gold */
+.wordmarkWrap:hover .wordmark em {
+  background-size: 100% 100%;
+}
+
+.footerCluster {
+  /* why: the default dark berries and green leaf would vanish against the plum footer */
+  --berry-light: #e3b7d6;
+  --berry-mid: #a85f97;
+  --berry-dark: #6b3460;
+  --vine: #9fb58a;
+  flex: none;
+  width: clamp(5rem, 14vw, 9rem);
+}
+
+.list a {
+  position: relative;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.list a:hover {
+  transform: translateX(6px);
+  text-decoration: none;
+  color: var(--color-gold);
+}
+
+@media (max-width: 30rem) {
+  .footerCluster {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .list a:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,28 @@
+.mask {
+  display: inline-block;
+  overflow: clip;
+  /* why: descenders (g, p) and accents would be cut by overflow clip without this breathing room */
+  padding-block: 0.08em 0.14em;
+  margin-block: -0.08em -0.14em;
+  vertical-align: top;
+}
+
+.word {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .word {
+    animation: rise 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--delay) + var(--i) * var(--stagger));
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(110%) rotate(4deg);
+  }
+  to {
+    transform: none;
+  }
+}

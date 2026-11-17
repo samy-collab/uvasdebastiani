@@ -1,0 +1,55 @@
+.section {
+  position: relative;
+  padding-block: var(--space-section);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 40rem;
+  margin-bottom: var(--space-2xl);
+}
+
+.title {
+  font-size: var(--text-h2);
+}
+
+.lead {
+  font-size: var(--text-lg);
+  color: var(--color-muted);
+}
+
+.grid {
+  list-style: none;
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.cell,
+.revealCell {
+  height: 100%;
+}
+
+@media (min-width: 40rem) and (max-width: 59.99rem) {
+  .grid {
+    max-width: 36rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  /* a gentle stagger in height turns the row into a staircase */
+  .cell:nth-child(2) {
+    margin-top: var(--space-2xl);
+  }
+
+  .cell:nth-child(3) {
+    margin-top: calc(var(--space-2xl) * 2);
+  }
+}

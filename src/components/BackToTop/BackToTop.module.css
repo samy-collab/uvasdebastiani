@@ -1,0 +1,59 @@
+.button {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-plum);
+  box-shadow: var(--shadow-soft);
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.button[data-visible='false'] {
+  opacity: 0;
+  transform: translateY(1.5rem) scale(0.6);
+  pointer-events: none;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.track,
+.progress {
+  fill: none;
+  stroke-width: 3;
+}
+
+.track {
+  stroke: rgb(70 36 62 / 0.1);
+}
+
+.progress {
+  stroke: var(--color-gold);
+  stroke-linecap: round;
+}
+
+.arrow {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+
+.button:hover .arrow {
+  transform: translateY(-3px);
+}
