@@ -15,6 +15,7 @@ import { grapeTypes } from './data/grapes';
 import { site } from './data/site';
 
 const highlights = [
+  'De Bastiani',
   'Uvas de mesa',
   'Uvas tradicionais',
   'Cultivo orgânico',
