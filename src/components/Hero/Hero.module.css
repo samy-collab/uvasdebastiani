@@ -85,8 +85,9 @@
 .media {
   --progress: 0.5;
   position: relative;
-  /* why: room on the sides for the cluster and stamp, which overhang the photo */
-  margin-inline: var(--space-md);
+  /* why: the clips are filmed upright; capping the width by the screen height keeps the whole 4:5 frame on short or sideways screens */
+  width: min(100% - 2 * var(--space-md), 75svh * 0.8);
+  margin-inline: auto;
 }
 
 .frame {
@@ -97,9 +98,8 @@
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* why: a wider 3:2 frame on phones keeps the hero short; the video is centred, so the vineyard aisle stays in the crop */
 .photo {
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 5;
 }
 
 .photo video {
@@ -185,6 +185,19 @@
   transform: translateY(-100%);
 }
 
+/* why: on small screens the floating cluster and a large stamp would sit on top of the video, so the cluster hides and the stamp shrinks into the corner */
+@media (max-width: 59.99rem) {
+  .clusterWrap {
+    display: none;
+  }
+
+  .stamp {
+    top: -1.25rem;
+    right: -0.75rem;
+    width: 4.75rem;
+  }
+}
+
 @media (max-width: 30rem) {
   .actions {
     flex-direction: column;
@@ -206,12 +219,8 @@
     gap: var(--space-3xl);
   }
 
-  .photo {
-    aspect-ratio: 4 / 5;
-  }
-
   .media {
-    margin-inline: 0 var(--space-lg);
+    width: min(100% - var(--space-lg), 75svh * 0.8);
   }
 
   .clusterWrap {

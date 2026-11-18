@@ -80,8 +80,7 @@
   z-index: 2;
   display: grid;
   gap: var(--space-sm);
-  width: min(100% - 2rem, 20rem);
-  margin: calc(var(--space-2xl) * -1) auto 0;
+  margin-top: var(--space-sm);
   padding: var(--space-md) var(--space-lg);
   background: var(--color-surface);
   border-radius: var(--radius-md);
