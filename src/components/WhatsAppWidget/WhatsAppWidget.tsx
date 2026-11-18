@@ -2,15 +2,18 @@ import { useEffect, useId, useRef, useState } from 'react';
 import { site } from '../../data/site';
 import styles from './WhatsAppWidget.module.css';
 
+/** Abertura de toda mensagem, para a família saber que o contato veio pelo site. */
+const GREETING = 'Olá! Vim do site Uvas De Bastiani.';
+
 /** Mensagens prontas: o visitante escolhe uma e ela já chega escrita no WhatsApp. */
 const topics = [
-  { label: 'Comprar uvas', message: 'Olá! Gostaria de saber quais uvas vocês têm disponíveis.' },
-  { label: 'Sucos e geleias', message: 'Olá! Gostaria de encomendar sucos e geleias.' },
-  { label: 'Kits presente', message: 'Olá! Tenho interesse nos kits presente.' },
-  { label: 'Dia de colheita', message: 'Olá! Quando será o próximo dia de colheita?' },
+  { label: 'Comprar uvas', message: `${GREETING} Gostaria de saber quais uvas vocês têm disponíveis.` },
+  { label: 'Sucos e geleias', message: `${GREETING} Gostaria de encomendar sucos e geleias.` },
+  { label: 'Kits presente', message: `${GREETING} Tenho interesse nos kits presente.` },
+  { label: 'Dia de colheita', message: `${GREETING} Quando será o próximo dia de colheita?` },
 ];
 
-const DEFAULT_MESSAGE = 'Olá! Vim pelo site da De Bastiani.';
+const DEFAULT_MESSAGE = GREETING;
 
 export function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
