@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 export function useInView<T extends Element>(rootMargin = '0px 0px -12% 0px') {
   const ref = useRef<T>(null);
   // why: without IntersectionObserver nothing would ever flip this, so the content would stay hidden forever
-  const [inView, setInView] = useState(() => !('IntersectionObserver' in window));
+  const [inView, setInView] = useState(() => typeof window !== 'undefined' && !('IntersectionObserver' in window));
 
   useEffect(() => {
     const node = ref.current;

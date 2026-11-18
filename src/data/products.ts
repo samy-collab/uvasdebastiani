@@ -39,7 +39,7 @@ export const products: Product[] = [
   {
     id: 'geleias',
     title: 'Geleias',
-    description: 'Potes de geleia De Bastiani para o café da manhã, o pão caseiro e a sobremesa.',
+    description: 'Potes de geleia e mel produzidos por nós, em embalagens perfeitas para o seu café da manhã ou lanche da tarde, tudo feito de forma artesanal.',
     image: images.produtoGeleias,
     itemsLabel: 'Sabores',
     items: [],

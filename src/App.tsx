@@ -19,7 +19,7 @@ const highlights = [
   'De Bastiani',
   'Uvas de mesa',
   'Uvas tradicionais',
-  'Cultivo orgânico',
+  'Cultivo em família',
   'Sucos',
   'Geleias',
   'Kits presente',

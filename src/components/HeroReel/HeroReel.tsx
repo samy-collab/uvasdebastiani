@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { SiteVideo } from '../../data/images';
 import { prefersReducedMotion } from '../../hooks/motion';
+import { useClientValue } from '../../hooks/useClientValue';
 import { useVisible } from '../../hooks/useVisible';
 import styles from './HeroReel.module.css';
 
@@ -8,7 +9,7 @@ export interface ReelClip {
   video: SiteVideo;
   /** Frase curta exibida ao lado do vídeo enquanto ele toca. */
   caption: string;
-  /** Linha menor acima da frase, ex.: "Cultivo orgânico". */
+  /** Linha menor acima da frase, ex.: "Nosso cultivo". */
   kicker: string;
 }
 
@@ -30,7 +31,7 @@ export function HeroReel({ clips, className, stageClassName }: HeroReelProps) {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const progressRef = useRef<HTMLSpanElement>(null);
   const visible = useVisible(rootRef);
-  const [autoplay] = useState(() => !prefersReducedMotion());
+  const autoplay = useClientValue(() => !prefersReducedMotion(), true);
 
   useEffect(() => {
     const video = videoRefs.current[active];

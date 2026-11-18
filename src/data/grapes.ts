@@ -24,11 +24,11 @@ export const grapeTypes: GrapeType[] = [
     title: 'Uvas de mesa',
     lead: 'Cachos grandes e bagas firmes e alongadas, de diversas variedades que se revezam ao longo da safra.',
     paragraphs: [
-      'Cultivamos as uvas de mesa de forma orgânica, sob cobertura plástica, que protege os cachos da chuva e do granizo desde a flor até a colheita.',
+      'Cultivamos as uvas de mesa sob cobertura plástica, que protege os cachos da chuva e do granizo desde a flor até a colheita.',
       'Cada cacho é acompanhado na parreira e colhido à mão, com tesoura, quando chega ao ponto certo.',
     ],
     practices: [
-      { label: 'Cultivo orgânico', icon: 'sprout' },
+      { label: 'Cultivo cuidadoso', icon: 'sprout' },
       { label: 'Sob cobertura', icon: 'cover' },
       { label: 'Colheita manual', icon: 'scissors' },
     ],
@@ -43,12 +43,12 @@ export const grapeTypes: GrapeType[] = [
     title: 'Uvas tradicionais',
     lead: 'Bagas redondas, cachos compactos e o sabor de uva que marca a Serra Gaúcha.',
     paragraphs: [
-      'As uvas tradicionais crescem de forma orgânica na latada, o jeito mais antigo de conduzir a parreira na região, com os cachos pendurados ao alcance da mão.',
+      'As uvas tradicionais crescem em parreirais conduzidos do jeito mais antigo da região, com os cachos pendurados ao alcance da mão.',
       'São elas que enchem as caixas nos dias de colheita, para comer na hora e levar para casa.',
     ],
     practices: [
-      { label: 'Cultivo orgânico', icon: 'sprout' },
-      { label: 'Em latada', icon: 'trellis' },
+      { label: 'Cultivo cuidadoso', icon: 'sprout' },
+      { label: 'No parreiral', icon: 'trellis' },
       { label: 'Colheita manual', icon: 'scissors' },
     ],
     traits: ['Bagas redondas e cachos compactos', 'Variedades típicas da Serra Gaúcha', 'Para comer frescas, direto do cacho'],

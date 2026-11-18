@@ -6,7 +6,7 @@ import { VideoReel, type ReelItem } from '../VideoReel/VideoReel';
 import styles from './HarvestSection.module.css';
 
 const reel: ReelItem[] = [
-  { video: videos.colheitaMao, caption: 'Colha direto da latada' },
+  { video: videos.colheitaMao, caption: 'Colha direto da parreira' },
   { video: videos.colheitaCaixas, caption: 'Escolha os seus cachos' },
   { video: videos.colheitaLatada, caption: 'Cachos maduros no ponto' },
   { video: videos.colheitaMesa, caption: 'Mesa posta à sombra' },
@@ -29,7 +29,7 @@ export function HarvestSection() {
           </Reveal>
           <Reveal delay={200} className={styles.text}>
             <p>
-              Na época da safra, abrimos a propriedade para visitas: você caminha entre as latadas,
+              Na época da safra, abrimos a propriedade para visitas: você caminha em meio ao parreiral,
               escolhe os cachos e colhe com as próprias mãos.
             </p>
             <p>
@@ -49,7 +49,7 @@ export function HarvestSection() {
 
         <Reveal variant="wipe" delay={150} className={styles.stand}>
           <Photo image={images.banca} className={styles.standPhoto} sizes="(min-width: 60rem) 26rem, 100vw" />
-          <p className={styles.standCaption}>Banca com sucos, geleias e uvas na propriedade</p>
+          <p className={styles.standCaption}>Banca com sucos, geleias e uvas da propriedade</p>
         </Reveal>
       </div>
 

@@ -64,12 +64,12 @@ export const images = {
     'mesa-corredor',
     'Corredor entre fileiras de parreiras carregadas de cachos, sob cobertura plástica',
   ),
-  tradicionaisCachos: photo('tradicionais-cachos', 'Cachos de uva tradicional de bagas redondas pendurados na latada'),
+  tradicionaisCachos: photo('tradicionais-cachos', 'Cachos de uva tradicional de bagas redondas pendurados na parreira'),
   tradicionaisFolhas: photo('tradicionais-folhas', 'Cachos de uva tradicional de bagas redondas entre folhas de parreira'),
-  tradicionaisParreiral: photo('tradicionais-parreiral', 'Fileira de latada coberta de cachos, vista de baixo'),
+  tradicionaisParreiral: photo('tradicionais-parreiral', 'Fileira do parreiral coberta de cachos, vista de baixo'),
   tradicionaisLatada: photo(
     'tradicionais-latada',
-    'Latada com dezenas de cachos maduros pendurados em linha',
+    'Parreira com dezenas de cachos maduros pendurados em linha',
     '50% 60%',
   ),
   produtoCaixaUvas: photo(
@@ -117,16 +117,16 @@ export const videos = {
   heroVariedades: video('hero-variedades', 'Cacho de uva de mesa de bagas alongadas, de perto'),
   heroBanca: video('hero-banca', 'Banca da propriedade com sucos, geleias e uvas'),
   mesa: video('mesa-cachos', 'Cachos de uva de mesa pendurados na parreira'),
-  tradicionais: video('tradicionais-latada', 'Latada repleta de cachos de uva tradicional'),
+  tradicionais: video('tradicionais-latada', 'Parreiral repleto de cachos de uva tradicional'),
   familia: video('familia-colheita', 'Colheita de um cacho de uva com tesoura, direto da parreira'),
   criancasUva: video('criancas-uva', 'Menina provando uvas ao lado da mesa de piquenique'),
   criancasCamaElastica: video('criancas-cama-elastica', 'Menina sentada na cama elástica com um cacho de uva'),
   criancasBrincando: video('criancas-brincando', 'Crianças brincando na cama elástica ao ar livre'),
   criancasLimonada: video('criancas-limonada', 'Menina se servindo de limonada na mesa com toalha xadrez'),
-  colheitaMao: video('colheita-mao', 'Mão de um visitante colhendo um cacho de uva na latada'),
+  colheitaMao: video('colheita-mao', 'Mão de um visitante colhendo um cacho de uva na parreira'),
   colheitaCaixas: video('colheita-caixas', 'Caixas cheias de uvas sobre toalha xadrez'),
   colheitaMesa: video('colheita-mesa', 'Mesa com toalha xadrez, jarras de limonada e uma caixa de frutas'),
-  colheitaLatada: video('colheita-latada', 'Cachos maduros pendurados na latada no dia de colheita'),
+  colheitaLatada: video('colheita-latada', 'Cachos maduros pendurados na parreira no dia de colheita'),
 } satisfies Record<string, SiteVideo>;
 
 export const imageCredits: ImageCredit[] = Object.values(images).flatMap((image: SiteImage) =>

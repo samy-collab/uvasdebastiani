@@ -6,7 +6,7 @@ import { useEffect, useState, type RefObject } from 'react';
  */
 export function useVisible<T extends Element>(ref: RefObject<T | null>, rootMargin = '200px 0px'): boolean {
   // why: without IntersectionObserver nothing would ever flip this, so treat the element as always visible
-  const [visible, setVisible] = useState(() => !('IntersectionObserver' in window));
+  const [visible, setVisible] = useState(() => typeof window !== 'undefined' && !('IntersectionObserver' in window));
 
   useEffect(() => {
     const node = ref.current;

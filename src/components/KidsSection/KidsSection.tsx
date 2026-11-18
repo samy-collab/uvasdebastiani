@@ -8,13 +8,13 @@ import styles from './KidsSection.module.css';
 const freedoms: { text: string; icon: NatureIconName }[] = [
   { text: 'Colher e provar a uva direto do cacho', icon: 'grapes' },
   { text: 'Correr e brincar ao ar livre, entre as parreiras', icon: 'sun' },
-  { text: 'Cama elástica, sombra e espaço de sobra', icon: 'leaf' },
+  { text: 'Sombra fresca e espaço de sobra para brincar', icon: 'leaf' },
   { text: 'Descobrir de onde vem a fruta que chega à mesa', icon: 'sprout' },
 ];
 
 const reel: ReelItem[] = [
   { video: videos.criancasUva, caption: 'Provar a uva na hora' },
-  { video: videos.criancasCamaElastica, caption: 'Pular com um cacho na mão' },
+  { video: videos.criancasCamaElastica, caption: 'Tão irresistível que se come até brincando' },
   { video: videos.criancasBrincando, caption: 'Brincar sem pressa' },
   { video: videos.criancasLimonada, caption: 'Limonada fresquinha' },
 ];

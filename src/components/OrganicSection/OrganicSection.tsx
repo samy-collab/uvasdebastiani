@@ -7,9 +7,9 @@ import styles from './OrganicSection.module.css';
 
 const pillars: { title: string; text: string; icon: NatureIconName }[] = [
   {
-    title: 'Manejo orgânico',
+    title: 'Respeito à natureza',
     icon: 'sprout',
-    text: 'A uva cresce sem agrotóxicos sintéticos, no tempo da natureza.',
+    text: 'A uva cresce no tempo da natureza, com manejo atento a cada etapa do ciclo.',
   },
   {
     title: 'Roseiras no parreiral',
@@ -32,7 +32,7 @@ export function OrganicSection() {
   const sectionRef = useScrollProgress<HTMLElement>();
 
   return (
-    <section ref={sectionRef} id="cultivo-organico" className={styles.section} aria-labelledby="organico-title">
+    <section ref={sectionRef} id="nosso-cultivo" className={styles.section} aria-labelledby="organico-title">
       <div className={`container ${styles.layout}`}>
         <div className={styles.media}>
           <Reveal variant="wipe">
@@ -42,8 +42,8 @@ export function OrganicSection() {
             <p className={styles.badge}>
               <NatureIcon name="leaf" className={styles.badgeIcon} />
               <span>
-                Cultivo
-                <strong>orgânico</strong>
+                Feito com
+                <strong>cuidado</strong>
               </span>
             </p>
           </Reveal>
@@ -51,7 +51,7 @@ export function OrganicSection() {
 
         <div className={styles.content}>
           <Reveal variant="left">
-            <p className={`eyebrow ${styles.eyebrow}`}>Cultivo orgânico</p>
+            <p className={`eyebrow ${styles.eyebrow}`}>Nosso cultivo</p>
           </Reveal>
           <Reveal delay={100}>
             <h2 id="organico-title" className={styles.title}>
@@ -60,7 +60,7 @@ export function OrganicSection() {
           </Reveal>
           <Reveal delay={180}>
             <p className={styles.lead}>
-              Nosso parreiral é cultivado de forma orgânica: respeitamos o solo, as plantas e o
+              No nosso parreiral, respeitamos o solo, as plantas e o
               tempo de cada cacho, para que a fruta chegue à sua mesa como deve ser.
             </p>
           </Reveal>

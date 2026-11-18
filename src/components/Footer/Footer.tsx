@@ -1,12 +1,15 @@
 import { imageCredits } from '../../data/images';
 import { getContactLinks, navLinks, site } from '../../data/site';
+import { useClientValue } from '../../hooks/useClientValue';
 import { Reveal } from '../Reveal/Reveal';
 import styles from './Footer.module.css';
 
-const currentYear = new Date().getFullYear();
+const buildYear = new Date().getFullYear();
+const getCurrentYear = () => new Date().getFullYear();
 
 export function Footer() {
   const contacts = getContactLinks();
+  const currentYear = useClientValue(getCurrentYear, buildYear);
 
   return (
     <footer className={styles.footer}>
