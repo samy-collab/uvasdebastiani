@@ -103,7 +103,7 @@
 .pillar {
   display: grid;
   grid-template-columns: auto 1fr;
-  column-gap: var(--space-sm);
+  column-gap: var(--space-md);
   row-gap: 0.2rem;
   padding-top: var(--space-md);
   border-top: 1px solid rgb(248 244 234 / 0.18);
@@ -111,9 +111,11 @@
 
 .pillarIcon {
   grid-row: span 2;
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-top: 0.15rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.6rem;
+  border-radius: 50%;
+  background: rgb(207 224 184 / 0.14);
   color: #cfe0b8;
 }
 

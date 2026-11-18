@@ -1,3 +1,4 @@
+import type { NatureIconName } from '../components/NatureIcon/NatureIcon';
 import { images, videos, type SiteImage, type SiteVideo } from './images';
 
 export interface GrapeType {
@@ -6,8 +7,8 @@ export interface GrapeType {
   title: string;
   lead: string;
   paragraphs: string[];
-  /** Selos do cultivo, mostrados como etiquetas abaixo do texto. */
-  practices: string[];
+  /** Selos do cultivo, mostrados como etiquetas abaixo do texto; o primeiro ganha destaque. */
+  practices: { label: string; icon: NatureIconName }[];
   traits: string[];
   video: SiteVideo;
   /** Três fotos: a primeira ao lado do vídeo, no alto; a terceira ocupa a faixa de baixo. */
@@ -26,7 +27,11 @@ export const grapeTypes: GrapeType[] = [
       'Cultivamos as uvas de mesa de forma orgânica, sob cobertura plástica, que protege os cachos da chuva e do granizo desde a flor até a colheita.',
       'Cada cacho é acompanhado na parreira e colhido à mão, com tesoura, quando chega ao ponto certo.',
     ],
-    practices: ['Cultivo orgânico', 'Sob cobertura', 'Colheita manual'],
+    practices: [
+      { label: 'Cultivo orgânico', icon: 'sprout' },
+      { label: 'Sob cobertura', icon: 'cover' },
+      { label: 'Colheita manual', icon: 'scissors' },
+    ],
     traits: ['Diversas variedades ao longo da safra', 'Bagas firmes e alongadas', 'Colhidas no ponto, direto da parreira'],
     video: videos.mesa,
     photos: [images.mesaBagasAlongadas, images.mesaCachosGrandes, images.mesaCorredor],
@@ -41,7 +46,11 @@ export const grapeTypes: GrapeType[] = [
       'As uvas tradicionais crescem de forma orgânica na latada, o jeito mais antigo de conduzir a parreira na região, com os cachos pendurados ao alcance da mão.',
       'São elas que enchem as caixas nos dias de colheita, para comer na hora e levar para casa.',
     ],
-    practices: ['Cultivo orgânico', 'Em latada', 'Colheita manual'],
+    practices: [
+      { label: 'Cultivo orgânico', icon: 'sprout' },
+      { label: 'Em latada', icon: 'trellis' },
+      { label: 'Colheita manual', icon: 'scissors' },
+    ],
     traits: ['Bagas redondas e cachos compactos', 'Variedades típicas da Serra Gaúcha', 'Para comer frescas, direto do cacho'],
     video: videos.tradicionais,
     photos: [images.tradicionaisCachos, images.tradicionaisFolhas, images.tradicionaisLatada],

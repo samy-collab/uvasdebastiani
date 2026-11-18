@@ -1,6 +1,6 @@
 import type { GrapeType } from '../../data/grapes';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
-import { LeafIcon } from '../LeafIcon/LeafIcon';
+import { NatureIcon } from '../NatureIcon/NatureIcon';
 import { LoopVideo } from '../LoopVideo/LoopVideo';
 import { Photo } from '../Photo/Photo';
 import { Reveal } from '../Reveal/Reveal';
@@ -55,9 +55,9 @@ export function GrapeSection({ grape, reversed = false }: GrapeSectionProps) {
             </p>
             <ul className={styles.practices} aria-labelledby={`${grape.id}-cultivo`}>
               {grape.practices.map((practice) => (
-                <li key={practice} className={styles.practice}>
-                  <LeafIcon className={styles.icon} />
-                  {practice}
+                <li key={practice.label} className={styles.practice}>
+                  <NatureIcon name={practice.icon} className={styles.icon} />
+                  {practice.label}
                 </li>
               ))}
             </ul>

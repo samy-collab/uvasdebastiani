@@ -6,6 +6,7 @@ import { GrapeSection } from './components/GrapeSection/GrapeSection';
 import { HarvestSection } from './components/HarvestSection/HarvestSection';
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
+import { KidsSection } from './components/KidsSection/KidsSection';
 import { LocationSection } from './components/LocationSection/LocationSection';
 import { Marquee } from './components/Marquee/Marquee';
 import { OrganicSection } from './components/OrganicSection/OrganicSection';
@@ -48,6 +49,7 @@ export default function App() {
         <OrganicSection />
         <ProductsSection />
         <HarvestSection />
+        <KidsSection />
         <AboutSection />
         <LocationSection />
       </main>

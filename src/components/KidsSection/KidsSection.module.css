@@ -1,0 +1,107 @@
+.section {
+  position: relative;
+  padding-block: var(--space-section);
+  background:
+    radial-gradient(40rem 26rem at 0% 0%, rgb(199 154 92 / 0.22), transparent 70%),
+    radial-gradient(36rem 24rem at 100% 100%, rgb(159 181 138 / 0.25), transparent 70%),
+    #fbf3e4;
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-2xl);
+  align-items: center;
+  margin-bottom: var(--space-2xl);
+}
+
+/* why: the source photo is a 294 px wide capture, so it is shown at about its own size instead of being stretched blurry */
+.polaroidWrap {
+  justify-self: center;
+  width: min(100%, 18rem);
+}
+
+.polaroid {
+  margin: 0;
+  padding: 0.75rem 0.75rem 0;
+  background: #fff;
+  border-radius: 0.375rem;
+  box-shadow: 0 30px 50px -28px rgb(39 34 31 / 0.55);
+  transform: rotate(-3deg);
+}
+
+.photo {
+  aspect-ratio: 294 / 425;
+  border-radius: 0.125rem;
+}
+
+.polaroidCaption {
+  padding: var(--space-sm) 0 var(--space-md);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-style: italic;
+  text-align: center;
+  color: var(--color-plum);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.title {
+  font-size: var(--text-h2);
+}
+
+.lead {
+  max-width: 36rem;
+  font-size: var(--text-lg);
+}
+
+.list {
+  list-style: none;
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-weight: 500;
+}
+
+.iconBadge {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--color-plum);
+  color: var(--color-on-dark);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+@media (min-width: 60rem) {
+  .layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: var(--space-3xl);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .polaroid {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .polaroid:hover {
+    transform: rotate(0deg) scale(1.02);
+  }
+}

@@ -1,25 +1,29 @@
 import { images } from '../../data/images';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
-import { LeafIcon } from '../LeafIcon/LeafIcon';
+import { NatureIcon, type NatureIconName } from '../NatureIcon/NatureIcon';
 import { Photo } from '../Photo/Photo';
 import { Reveal } from '../Reveal/Reveal';
 import styles from './OrganicSection.module.css';
 
-const pillars = [
+const pillars: { title: string; text: string; icon: NatureIconName }[] = [
   {
     title: 'Manejo orgânico',
+    icon: 'sprout',
     text: 'A uva cresce sem agrotóxicos sintéticos, no tempo da natureza.',
   },
   {
     title: 'Roseiras no parreiral',
+    icon: 'rose',
     text: 'As roseiras floridas nas cabeceiras das fileiras fazem parte da paisagem e do cuidado com a lavoura.',
   },
   {
     title: 'Cultivo protegido',
+    icon: 'cover',
     text: 'A cobertura sobre as parreiras resguarda os cachos da chuva forte e do granizo.',
   },
   {
     title: 'Colheita à mão',
+    icon: 'scissors',
     text: 'Cada cacho é escolhido e cortado com tesoura, só quando chega ao ponto certo.',
   },
 ];
@@ -36,7 +40,7 @@ export function OrganicSection() {
           </Reveal>
           <Reveal variant="scale" delay={300} className={styles.badgeWrap}>
             <p className={styles.badge}>
-              <LeafIcon className={styles.badgeIcon} />
+              <NatureIcon name="leaf" className={styles.badgeIcon} />
               <span>
                 Cultivo
                 <strong>orgânico</strong>
@@ -65,7 +69,7 @@ export function OrganicSection() {
             {pillars.map((pillar, index) => (
               <li key={pillar.title}>
                 <Reveal delay={240 + index * 90} className={styles.pillar}>
-                  <LeafIcon className={styles.pillarIcon} />
+                  <NatureIcon name={pillar.icon} className={styles.pillarIcon} />
                   <h3 className={styles.pillarTitle}>{pillar.title}</h3>
                   <p className={styles.pillarText}>{pillar.text}</p>
                 </Reveal>

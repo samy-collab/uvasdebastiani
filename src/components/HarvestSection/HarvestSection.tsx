@@ -1,11 +1,11 @@
 import { images, videos } from '../../data/images';
 import { getContactLinks } from '../../data/site';
-import { LoopVideo } from '../LoopVideo/LoopVideo';
 import { Photo } from '../Photo/Photo';
 import { Reveal } from '../Reveal/Reveal';
+import { VideoReel, type ReelItem } from '../VideoReel/VideoReel';
 import styles from './HarvestSection.module.css';
 
-const reel = [
+const reel: ReelItem[] = [
   { video: videos.colheitaMao, caption: 'Colha direto da latada' },
   { video: videos.colheitaCaixas, caption: 'Escolha os seus cachos' },
   { video: videos.colheitaLatada, caption: 'Cachos maduros no ponto' },
@@ -54,16 +54,7 @@ export function HarvestSection() {
       </div>
 
       <div className="container">
-        <ul className={`snap-strip ${styles.reel}`}>
-          {reel.map((item, index) => (
-            <li key={item.caption} className={styles.reelItem}>
-              <Reveal variant="up" delay={index * 120}>
-                <LoopVideo video={item.video} className={styles.reelVideo} />
-                <p className={styles.reelCaption}>{item.caption}</p>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+        <VideoReel items={reel} />
       </div>
     </section>
   );

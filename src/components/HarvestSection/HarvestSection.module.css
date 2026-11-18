@@ -43,21 +43,6 @@
   color: var(--color-muted);
 }
 
-.reel {
-  list-style: none;
-}
-
-.reelVideo {
-  box-shadow: var(--shadow-soft);
-}
-
-.reelCaption {
-  margin-top: var(--space-sm);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--color-plum);
-}
-
 @media (min-width: 60rem) {
   .layout {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -67,16 +52,5 @@
 
   .standPhoto {
     aspect-ratio: 4 / 5;
-  }
-
-  .reel {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: var(--space-lg);
-  }
-
-  /* why: alternating offsets give the four tall clips a filmstrip rhythm instead of a flat row */
-  .reelItem:nth-child(even) {
-    margin-top: var(--space-2xl);
   }
 }

@@ -1,0 +1,27 @@
+.reel {
+  list-style: none;
+}
+
+.video {
+  box-shadow: var(--shadow-soft);
+}
+
+.caption {
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-plum);
+}
+
+@media (min-width: 60rem) {
+  .reel {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  /* why: alternating offsets give the four tall clips a filmstrip rhythm instead of a flat row */
+  .item:nth-child(even) {
+    margin-top: var(--space-2xl);
+  }
+}
