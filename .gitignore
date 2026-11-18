@@ -28,3 +28,6 @@ dist-ssr
 
 # Fotos e vídeos originais (2 GB): as versões otimizadas para o site ficam em public/media/
 fotos-videos-uvasdebastiani/
+
+# Cache do Python gerado ao rodar scripts/
+__pycache__/
