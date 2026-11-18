@@ -1,7 +1,7 @@
 """Gera as fotos (WebP) e vídeos (MP4 sem áudio) do site a partir da pasta original.
 
 Uso:
-    FFMPEG=/caminho/do/ffmpeg python3 scripts/otimizar-midia.py
+    FFMPEG=/caminho/do/ffmpeg python3 scripts/otimizar-midia.py [fotos] [videos] [logo]
 
 A pasta original (fotos-videos-uvasdebastiani/) não vai para o git; o resultado
 fica em public/media/. Para trocar ou acrescentar uma mídia, edite as listas
@@ -101,9 +101,69 @@ def build_videos() -> None:
         print('vídeo', name)
 
 
+LOGO = 'Logo/Crisp De Bastiani Grape Logo.png'
+BRAND_OUT = ROOT / 'public' / 'brand'
+# invariant: the grape symbol ends before this x in the cropped logo; the lettering starts after it
+SYMBOL_RIGHT = 345
+CREAM = (248, 244, 234)
+
+
+def remove_white(im: Image.Image) -> Image.Image:
+    """Transforma o fundo branco em transparência, preservando a borda suave das letras."""
+    rgba = Image.new('RGBA', im.size)
+    pixels = []
+    for r, g, b in im.convert('RGB').get_flattened_data():
+        alpha = min(255, round((255 - min(r, g, b)) * 1.6))
+        # why: the source is a JPEG-like render; faint background speckle would otherwise survive as near-invisible pixels and triple the file size
+        if alpha < 28:
+            pixels.append((0, 0, 0, 0))
+            continue
+        a = alpha / 255
+        # why: without un-mixing the white, anti-aliased edges keep a pale halo on dark backgrounds
+        pixels.append(tuple(max(0, min(255, round((c - (1 - a) * 255) / a))) for c in (r, g, b)) + (alpha,))
+    rgba.putdata(pixels)
+    return rgba
+
+
+def recolor(im: Image.Image, color: tuple[int, int, int]) -> Image.Image:
+    solid = Image.new('RGBA', im.size, color + (255,))
+    solid.putalpha(im.getchannel('A'))
+    return solid
+
+
+def build_logo() -> None:
+    BRAND_OUT.mkdir(parents=True, exist_ok=True)
+    source = Image.open(SRC / LOGO).convert('RGB')
+    box = ImageOps.invert(source.convert('L')).point(lambda v: 255 if v > 20 else 0).getbbox()
+    pad = 12
+    logo = remove_white(source.crop((box[0] - pad, box[1] - pad, box[2] + pad, box[3] + pad)))
+    logo.resize((900, round(900 * logo.height / logo.width)), Image.Resampling.LANCZOS).save(
+        BRAND_OUT / 'logo.webp', 'WEBP', quality=90)
+    light = recolor(logo, CREAM)
+    light.resize((900, round(900 * light.height / light.width)), Image.Resampling.LANCZOS).save(
+        BRAND_OUT / 'logo-claro.webp', 'WEBP', quality=90)
+
+    symbol = logo.crop((0, 0, SYMBOL_RIGHT, logo.height))
+    symbol = symbol.crop(symbol.getbbox())
+    side = max(symbol.size)
+    square = Image.new('RGBA', (side, side))
+    square.paste(symbol, ((side - symbol.width) // 2, (side - symbol.height) // 2))
+    square.resize((256, 256), Image.Resampling.LANCZOS).save(BRAND_OUT / 'simbolo.webp', 'WEBP', quality=90)
+    square.resize((64, 64), Image.Resampling.LANCZOS).save(ROOT / 'public' / 'favicon.png')
+    touch = Image.new('RGBA', (side + side // 4,) * 2, CREAM + (255,))
+    touch.alpha_composite(square, (side // 8, side // 8))
+    touch.convert('RGB').resize((180, 180), Image.Resampling.LANCZOS).save(ROOT / 'public' / 'apple-touch-icon.png')
+    print('logo')
+
+
 if __name__ == '__main__':
     if not SRC.is_dir():
         sys.exit(f'Pasta original não encontrada: {SRC}')
     OUT.mkdir(parents=True, exist_ok=True)
-    build_photos()
-    build_videos()
+    targets = set(sys.argv[1:]) or {'fotos', 'videos', 'logo'}
+    if 'fotos' in targets:
+        build_photos()
+    if 'videos' in targets:
+        build_videos()
+    if 'logo' in targets:
+        build_logo()
