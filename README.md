@@ -16,9 +16,11 @@ npm run lint     # oxlint
 
 | O quê | Arquivo |
 |---|---|
-| Nome, cidade, endereço, rota, horários, WhatsApp, Instagram, link do Google | `src/data/site.ts` |
-| Categorias, descrições, variedades, sabores e embalagens | `src/data/products.ts` (campo `items`) |
-| Fotos: caminho, texto alternativo, ponto focal, selo "Imagem ilustrativa", créditos | `src/data/images.ts` |
+| Nome, cidade, ano de início, endereço, rota, horários, WhatsApp, Instagram, link do Google | `src/data/site.ts` |
+| Seções de uva (uvas de mesa e tradicionais): textos, cores, características, fotos e vídeo | `src/data/grapes.ts` |
+| Produtos: descrições, sabores, embalagens | `src/data/products.ts` (campo `items`) |
+| Fotos e vídeos: caminho, texto alternativo, ponto focal | `src/data/images.ts` |
+| Dia de colheita | `src/components/HarvestSection/HarvestSection.tsx` |
 | Texto da história da família | `src/components/AboutSection/AboutSection.tsx` |
 | Textos do topo (título, chamada) | `src/components/Hero/Hero.tsx` |
 | Cores, fontes, espaçamentos | `src/styles/tokens.css` |
@@ -27,11 +29,20 @@ npm run lint     # oxlint
 Campos de `site.ts` deixados como `undefined` ficam ocultos; ao preenchê-los, aparecem
 automaticamente na seção Localização e no rodapé.
 
-## Trocar as fotos
+## Fotos, vídeos e logo
 
-1. Salve a foto real em `public/images/`, em proporção **4:3**, em WebP (largura de ~1600 px no
-   topo e ~1200 px nas demais), mais uma versão menor (`-960` no topo, `-640` nas demais).
-   Usar os mesmos nomes de arquivo dispensa mudar o código.
-2. Em `src/data/images.ts`, atualize `alt`, `width`/`height` e `focalPoint`, marque
-   `placeholder: false` e apague `credit`. O selo e a linha de créditos somem sozinhos.
-3. Remova a linha correspondente de `public/images/CREDITOS.md`.
+Os originais ficam em `fotos-videos-uvasdebastiani/` (fora do git, ~2 GB). O site usa versões
+otimizadas em `public/media/` (fotos WebP 4:5 e vídeos MP4 curtos, sem áudio) e `public/brand/`
+(logo, logo clara, símbolo), além de `public/favicon.png` e `public/apple-touch-icon.png`.
+
+Para trocar ou acrescentar uma mídia:
+
+1. Ajuste as listas `PHOTOS` e `VIDEOS` em `scripts/otimizar-midia.py`.
+2. Rode o script (requer Python com Pillow e um `ffmpeg` com libx264):
+
+   ```bash
+   FFMPEG=/caminho/do/ffmpeg python3 scripts/otimizar-midia.py            # tudo
+   python3 scripts/otimizar-midia.py logo                                  # só a logo
+   ```
+
+3. Registre a nova mídia em `src/data/images.ts` com um `alt` descritivo.

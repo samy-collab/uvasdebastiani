@@ -2,19 +2,24 @@ import { useEffect } from 'react';
 import { AboutSection } from './components/AboutSection/AboutSection';
 import { BackToTop } from './components/BackToTop/BackToTop';
 import { Footer } from './components/Footer/Footer';
+import { GrapeSection } from './components/GrapeSection/GrapeSection';
+import { HarvestSection } from './components/HarvestSection/HarvestSection';
 import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
 import { LocationSection } from './components/LocationSection/LocationSection';
 import { Marquee } from './components/Marquee/Marquee';
 import { ProductsSection } from './components/ProductsSection/ProductsSection';
+import { grapeTypes } from './data/grapes';
 import { site } from './data/site';
 
 const highlights = [
   'Uvas de mesa',
-  'Geleias',
+  'Uvas tradicionais',
   'Sucos',
+  'Geleias',
+  'Kits presente',
   `${site.city}, ${site.stateAbbr}`,
-  'Cultivo em família',
+  `Desde ${site.since}`,
 ];
 
 export default function App() {
@@ -33,7 +38,11 @@ export default function App() {
       <main id="conteudo">
         <Hero />
         <Marquee items={highlights} />
+        {grapeTypes.map((grape, index) => (
+          <GrapeSection key={grape.id} grape={grape} reversed={index % 2 === 1} />
+        ))}
         <ProductsSection />
+        <HarvestSection />
         <AboutSection />
         <LocationSection />
       </main>

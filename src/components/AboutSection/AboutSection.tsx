@@ -1,6 +1,7 @@
-import { images } from '../../data/images';
+import { images, videos } from '../../data/images';
 import { site } from '../../data/site';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
+import { LoopVideo } from '../LoopVideo/LoopVideo';
 import { Photo } from '../Photo/Photo';
 import { Reveal } from '../Reveal/Reveal';
 import { VineJourney } from '../VineJourney/VineJourney';
@@ -23,10 +24,13 @@ export function AboutSection() {
         <div className={styles.photoCol}>
           <Reveal variant="wipe">
             <Photo
-              image={images.aboutHarvest}
+              image={images.familia}
               className={styles.photo}
               sizes="(min-width: 60rem) 34rem, 100vw"
             />
+          </Reveal>
+          <Reveal variant="scale" delay={300} className={styles.inset}>
+            <LoopVideo video={videos.familia} className={styles.insetVideo} />
           </Reveal>
           <span className={styles.photoAccent} aria-hidden="true" />
         </div>
@@ -37,16 +41,35 @@ export function AboutSection() {
           </Reveal>
           <Reveal delay={100}>
             <h2 id="familia-title" className={styles.title}>
-              Cultivo em família, em {site.city}
+              Uma família, uma parreira, desde {site.since}
             </h2>
           </Reveal>
           {/* A história da propriedade entra aqui, em novos parágrafos <p>. */}
           <Reveal delay={200} className={styles.text}>
             <p>
-              Somos a família De Bastiani e cultivamos uvas de mesa em {site.city}, no{' '}
-              {site.state}. Além das uvas, oferecemos geleias e sucos, com o cuidado de quem
-              trabalha a terra em família.
+              Somos a família De Bastiani. Desde {site.since} cultivamos uvas em {site.city}, no{' '}
+              {site.state}, com o cuidado de quem trabalha a terra em família.
             </p>
+            <p>
+              Cuidamos das parreiras ao longo do ano, colhemos os cachos à mão e levamos até a sua
+              mesa as uvas, os sucos e as geleias que carregam o nosso nome.
+            </p>
+          </Reveal>
+          <Reveal delay={280}>
+            <dl className={styles.facts}>
+              <div>
+                <dt>Desde</dt>
+                <dd>{site.since}</dd>
+              </div>
+              <div>
+                <dt>Tipos de uva</dt>
+                <dd>2</dd>
+              </div>
+              <div>
+                <dt>Cores de uva de mesa</dt>
+                <dd>3</dd>
+              </div>
+            </dl>
           </Reveal>
           <VineJourney />
         </div>

@@ -19,7 +19,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
         <Photo
           image={product.image}
           className={styles.photo}
-          sizes="(min-width: 60rem) 22rem, (min-width: 40rem) 36rem, 100vw"
+          sizes="(min-width: 64rem) 17rem, (min-width: 40rem) 45vw, 100vw"
         />
       </div>
       <div className={styles.body}>

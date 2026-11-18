@@ -13,6 +13,8 @@ export interface SiteInfo {
   city: string;
   state: string;
   stateAbbr: string;
+  /** Ano de início do cultivo, como aparece na logo. */
+  since: number;
   googleProfileUrl: string;
   /** Endereço completo, ex.: "Linha ..., s/n – Interior, Serafina Corrêa – RS, 99250-000". */
   address?: string;
@@ -31,18 +33,21 @@ export const site: SiteInfo = {
   city: 'Serafina Corrêa',
   state: 'Rio Grande do Sul',
   stateAbbr: 'RS',
+  since: 2010,
   googleProfileUrl: 'https://www.google.com/search?kgmid=%2Fg%2F11yw2pnpts',
   address: undefined,
   directionsUrl: undefined,
   openingHours: undefined,
   whatsapp: undefined,
-  instagram: undefined,
+  instagram: 'debastianiuvas',
 };
 
 export const navLinks: NavLink[] = [
-  { label: 'Início', href: '#inicio' },
+  { label: 'Uvas de mesa', href: '#uvas-de-mesa' },
+  { label: 'Tradicionais', href: '#uvas-tradicionais' },
   { label: 'Produtos', href: '#produtos' },
-  { label: 'Nossa família', href: '#familia' },
+  { label: 'Colheita', href: '#colheita' },
+  { label: 'Família', href: '#familia' },
   { label: 'Localização', href: '#localizacao' },
 ];
 

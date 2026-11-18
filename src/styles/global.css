@@ -141,7 +141,7 @@ main {
 
 .button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px -14px rgb(70 36 62 / 0.6);
+  box-shadow: 0 14px 28px -14px rgb(96 2 66 / 0.6);
 }
 
 .button:active {
@@ -217,4 +217,29 @@ main {
 
 .skip-link:focus {
   transform: none;
+}
+
+/* why: on phones a row of tall photos or videos becomes a sideways, snapping strip; stacked, they would push the next section several screens away */
+@media (max-width: 59.99rem) {
+  .snap-strip {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(70vw, 18rem);
+    gap: var(--space-sm);
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    padding-bottom: var(--space-xs);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .snap-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .snap-strip > * {
+    scroll-snap-align: start;
+  }
 }

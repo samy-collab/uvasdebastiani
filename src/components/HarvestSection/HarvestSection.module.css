@@ -1,0 +1,82 @@
+.section {
+  position: relative;
+  padding-block: var(--space-section);
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.title {
+  font-size: var(--text-h2);
+}
+
+.text {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 36rem;
+  margin-bottom: var(--space-xs);
+  font-size: var(--text-lg);
+}
+
+.stand {
+  position: relative;
+}
+
+.standPhoto {
+  aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-soft);
+}
+
+.standCaption {
+  margin-top: var(--space-xs);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.reel {
+  list-style: none;
+}
+
+.reelVideo {
+  box-shadow: var(--shadow-soft);
+}
+
+.reelCaption {
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-plum);
+}
+
+@media (min-width: 60rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .standPhoto {
+    aspect-ratio: 4 / 5;
+  }
+
+  .reel {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  /* why: alternating offsets give the four tall clips a filmstrip rhythm instead of a flat row */
+  .reelItem:nth-child(even) {
+    margin-top: var(--space-2xl);
+  }
+}

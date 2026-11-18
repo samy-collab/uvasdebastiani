@@ -13,11 +13,11 @@ export function ProductsSection() {
           </Reveal>
           <Reveal delay={100}>
             <h2 id="produtos-title" className={styles.title}>
-              O que oferecemos
+              Para levar para casa
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className={styles.lead}>Uvas de mesa, geleias e sucos da família De Bastiani.</p>
+            <p className={styles.lead}>Da parreira para a sua mesa: uvas, sucos, geleias e kits com a marca da família.</p>
           </Reveal>
         </header>
 

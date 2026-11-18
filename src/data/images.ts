@@ -1,11 +1,3 @@
-/**
- * Registro central das fotos do site.
- *
- * Para trocar uma foto provisória pela real: salve o arquivo em public/images/
- * (de preferência com o mesmo nome, em 4:3), ajuste `alt`, `focalPoint` e
- * `width`/`height`, marque `placeholder: false` e remova `credit`.
- */
-
 export interface ImageCredit {
   author: string;
   authorUrl: string;
@@ -29,98 +21,91 @@ export interface SiteImage {
   fit?: 'cover' | 'contain';
   /** `true` exibe o selo "Imagem ilustrativa". */
   placeholder: boolean;
+  /** Só para fotos de terceiros; aparece nos créditos do rodapé. */
   credit?: ImageCredit;
 }
 
-const UNSPLASH_LICENSE = {
-  source: 'Unsplash',
-  license: 'Licença Unsplash',
-  licenseUrl: 'https://unsplash.com/license',
-};
+export interface SiteVideo {
+  /** MP4 (H.264) sem áudio, tocado em loop. */
+  src: string;
+  /** Primeiro quadro do vídeo, mostrado antes de tocar e com movimento reduzido. */
+  poster: string;
+  /** Descrição do que o vídeo mostra, lida por leitores de tela. */
+  label: string;
+}
+
+/** Fotos de public/media/ geradas por scripts/otimizar-midia.py: 4:5, 1200 px e variante de 640 px. */
+function photo(name: string, alt: string, focalPoint = '50% 50%'): SiteImage {
+  return {
+    src: `/media/${name}.webp`,
+    variants: [{ src: `/media/${name}-640.webp`, width: 640 }],
+    width: 1200,
+    height: 1500,
+    alt,
+    focalPoint,
+    placeholder: false,
+  };
+}
+
+function video(name: string, label: string): SiteVideo {
+  return { src: `/media/${name}.mp4`, poster: `/media/${name}.webp`, label };
+}
 
 export const images = {
-  hero: {
-    src: '/images/hero-vinhedo.webp',
-    variants: [{ src: '/images/hero-vinhedo-960.webp', width: 960 }],
-    width: 1600,
-    height: 1200,
-    alt: 'Fileiras de parreiras em um vinhedo iluminado pelo sol, seguindo até o horizonte',
-    focalPoint: '50% 42%',
-    placeholder: true,
-    credit: {
-      ...UNSPLASH_LICENSE,
-      author: 'Lucas Gallone',
-      authorUrl: 'https://unsplash.com/@lucasgallone',
-      sourceUrl: 'https://unsplash.com/photos/rows-of-grapevines-in-a-sunlit-vineyard-DPNmKutv5D4',
-    },
-  },
-  productGrapes: {
-    src: '/images/produto-uvas.webp',
-    variants: [{ src: '/images/produto-uvas-640.webp', width: 640 }],
-    width: 1200,
-    height: 900,
-    alt: 'Cachos de uvas verdes pendurados na parreira, entre folhas e ramos',
-    focalPoint: '55% 50%',
-    placeholder: true,
-    credit: {
-      ...UNSPLASH_LICENSE,
-      author: 'Being Organic in EU',
-      authorUrl: 'https://unsplash.com/@beingorganicineu',
-      sourceUrl: 'https://unsplash.com/photos/a-bunch-of-green-grapes-hanging-from-a-vine-AS3zFfw3n6U',
-    },
-  },
-  productJams: {
-    src: '/images/produto-geleias.webp',
-    variants: [{ src: '/images/produto-geleias-640.webp', width: 640 }],
-    width: 1200,
-    height: 900,
-    alt: 'Pote de vidro com geleia escura e uma colher servindo a geleia',
-    focalPoint: '40% 50%',
-    placeholder: true,
-    credit: {
-      author: 'Boryslav Shoot',
-      authorUrl: 'https://www.pexels.com/@boryslav/',
-      source: 'Pexels',
-      sourceUrl: 'https://www.pexels.com/photo/jam-in-jar-15209691/',
-      license: 'Licença Pexels',
-      licenseUrl: 'https://www.pexels.com/license/',
-    },
-  },
-  productJuices: {
-    src: '/images/produto-sucos.webp',
-    variants: [{ src: '/images/produto-sucos-640.webp', width: 640 }],
-    width: 1200,
-    height: 900,
-    alt: 'Copo de vidro com suco de uva roxo sobre fundo claro',
-    focalPoint: '50% 50%',
-    fit: 'contain',
-    placeholder: true,
-    credit: {
-      author: 'Oyp',
-      authorUrl: 'https://commons.wikimedia.org/wiki/User:Oyp',
-      source: 'Wikimedia Commons',
-      sourceUrl: 'https://commons.wikimedia.org/wiki/File:Glass_of_grape_juice.jpeg',
-      license: 'CC BY-SA 3.0',
-      licenseUrl: 'https://creativecommons.org/licenses/by-sa/3.0/deed.pt-br',
-      changes: 'enquadrada em 4:3 e fundo tingido de creme',
-    },
-  },
-  aboutHarvest: {
-    src: '/images/cultivo-colheita.webp',
-    variants: [{ src: '/images/cultivo-colheita-640.webp', width: 640 }],
-    width: 1200,
-    height: 900,
-    alt: 'Mão segurando pelo talo um cacho de uvas vermelhas, com folhagem de outono ao fundo',
-    focalPoint: '70% 40%',
-    placeholder: true,
-    credit: {
-      ...UNSPLASH_LICENSE,
-      author: 'Marek Studzinski',
-      authorUrl: 'https://unsplash.com/@jccards',
-      sourceUrl: 'https://unsplash.com/photos/a-person-holding-a-bunch-of-grapes-in-their-hand-fHsPJgdBOqc',
-    },
-  },
+  mesaPretaVerde: photo(
+    'mesa-preta-verde',
+    'Cacho de uva preta pendurado na parreira, ao lado de cachos de uva verde',
+    '50% 40%',
+  ),
+  mesaVerde: photo('mesa-verde', 'Cachos grandes de uva verde e um cacho de uva preta sob a parreira'),
+  mesaRosada: photo('mesa-rosada', 'Cacho de uva rosada de bagas alongadas preso ao arame da parreira', '60% 60%'),
+  mesaPreta: photo('mesa-preta', 'Cachos de uva preta pendurados na parreira, com as fileiras ao fundo'),
+  mesaCorredor: photo(
+    'mesa-corredor',
+    'Corredor entre fileiras de parreiras carregadas de cachos verdes, sob cobertura plástica',
+  ),
+  tradicionaisCachos: photo('tradicionais-cachos', 'Cachos de uva rosada de bagas redondas pendurados na latada'),
+  tradicionaisPretas: photo('tradicionais-pretas', 'Cachos de uva escura de bagas redondas entre folhas de parreira'),
+  tradicionaisParreiral: photo('tradicionais-parreiral', 'Fileira de latada coberta de cachos rosados, vista de baixo'),
+  tradicionaisLatada: photo(
+    'tradicionais-latada',
+    'Latada com dezenas de cachos maduros pendurados em linha',
+    '50% 60%',
+  ),
+  produtoCaixaUvas: photo(
+    'produto-caixa-uvas',
+    'Caixa de papelão com dois cachos de uva, um verde e um rosado',
+    '50% 55%',
+  ),
+  produtoSuco: photo(
+    'produto-suco',
+    'Garrafa de suco de uva De Bastiani sobre uma caixa, com o parreiral ao fundo',
+    '50% 60%',
+  ),
+  produtoGeleias: photo(
+    'produto-geleias',
+    'Potes de geleia De Bastiani, um escuro e um dourado, ao lado de garrafas de suco',
+    '50% 70%',
+  ),
+  produtoKit: photo(
+    'produto-kit',
+    'Kit com garrafa de suco, potes de geleia e um cacho de uva sobre uma caixa de madeira',
+    '50% 60%',
+  ),
+  familia: photo('familia', 'A família De Bastiani reunida no gramado, em frente ao parreiral coberto', '50% 55%'),
+  banca: photo('banca', 'Banca da propriedade com garrafas de suco, potes de geleia e cestas de uva na prateleira'),
 } satisfies Record<string, SiteImage>;
+
+export const videos = {
+  hero: video('hero-corredor', 'Caminhada entre as fileiras de parreiras carregadas de uvas'),
+  mesa: video('mesa-cachos', 'Cachos de uva preta pendurados na parreira'),
+  tradicionais: video('tradicionais-latada', 'Latada repleta de cachos de uva rosada'),
+  familia: video('familia-colheita', 'Colheita de um cacho de uva verde com tesoura, direto da parreira'),
+  colheitaMao: video('colheita-mao', 'Mão de um visitante colhendo um cacho de uva na latada'),
+  colheitaCaixas: video('colheita-caixas', 'Caixas cheias de uvas verdes e rosadas sobre toalha xadrez'),
+  colheitaMesa: video('colheita-mesa', 'Mesa com toalha xadrez, jarras de limonada e uma caixa de frutas'),
+  colheitaLatada: video('colheita-latada', 'Cachos maduros pendurados na latada no dia de colheita'),
+} satisfies Record<string, SiteVideo>;
 
 export const imageCredits: ImageCredit[] = Object.values(images).flatMap((image: SiteImage) =>
   image.credit ? [image.credit] : [],

@@ -32,24 +32,28 @@
   height: 100%;
 }
 
-@media (min-width: 40rem) and (max-width: 59.99rem) {
+@media (min-width: 40rem) {
   .grid {
-    max-width: 36rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
   }
 }
 
-@media (min-width: 60rem) {
+@media (min-width: 64rem) {
   .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-lg);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   /* a gentle stagger in height turns the row into a staircase */
   .cell:nth-child(2) {
-    margin-top: var(--space-2xl);
+    margin-top: var(--space-xl);
   }
 
   .cell:nth-child(3) {
-    margin-top: calc(var(--space-2xl) * 2);
+    margin-top: calc(var(--space-xl) * 2);
+  }
+
+  .cell:nth-child(4) {
+    margin-top: calc(var(--space-xl) * 3);
   }
 }

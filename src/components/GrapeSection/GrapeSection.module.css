@@ -1,0 +1,220 @@
+.section {
+  --progress: 0.5;
+  --section-bg: var(--color-cream);
+  --section-text: var(--color-charcoal);
+  --section-heading: var(--color-plum);
+  --section-muted: var(--color-muted);
+  --section-line: rgb(96 2 66 / 0.14);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: var(--space-section);
+  background: var(--section-bg);
+  color: var(--section-text);
+}
+
+.section[data-tone='dark'] {
+  --section-bg: var(--color-plum-strong);
+  --section-text: var(--color-on-dark);
+  --section-heading: var(--color-on-dark);
+  --section-muted: var(--color-on-dark-muted);
+  --section-line: rgb(248 244 234 / 0.18);
+  background:
+    radial-gradient(60rem 40rem at 85% 10%, rgb(138 74 123 / 0.45), transparent 70%),
+    radial-gradient(40rem 30rem at 0% 100%, rgb(62 87 59 / 0.35), transparent 70%),
+    var(--section-bg);
+}
+
+.section[data-tone='light'] {
+  --section-bg: var(--color-sage);
+}
+
+.watermark {
+  position: absolute;
+  z-index: -1;
+  top: 0.1em;
+  left: 0;
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 13rem);
+  line-height: 1;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--section-line);
+  transform: translateX(calc((0.5 - var(--progress)) * 30%));
+  pointer-events: none;
+  user-select: none;
+}
+
+.layout {
+  display: grid;
+  gap: var(--space-2xl);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.section[data-tone='dark'] .eyebrow {
+  color: var(--color-gold);
+}
+
+.title {
+  font-size: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
+  letter-spacing: -0.015em;
+  color: var(--section-heading);
+}
+
+.lead {
+  max-width: 32rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  line-height: 1.4;
+}
+
+.text {
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 34rem;
+  color: var(--section-muted);
+}
+
+.label {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--section-muted);
+}
+
+.colors {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.color {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.4rem 0.95rem 0.4rem 0.45rem;
+  border: 1px solid var(--section-line);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
+
+.swatch {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, rgb(255 255 255 / 0.55), transparent 45%), var(--swatch);
+  box-shadow: inset 0 -3px 6px rgb(0 0 0 / 0.25);
+}
+
+.traits {
+  list-style: none;
+  display: grid;
+  gap: var(--space-xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--section-line);
+  width: 100%;
+  max-width: 34rem;
+}
+
+.traits li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.traits li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.tile {
+  aspect-ratio: 4 / 5;
+}
+
+.tileVideo {
+  aspect-ratio: 9 / 16;
+  align-self: start;
+}
+
+.fill {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.fill img,
+.fill video {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tile:hover .fill img,
+.tile:hover .fill video {
+  transform: scale(1.05);
+}
+
+@media (min-width: 60rem) {
+  .layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    gap: var(--space-3xl);
+  }
+
+  .section[data-reversed='true'] .content {
+    order: 2;
+  }
+
+  .collage {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: var(--space-sm);
+  }
+
+  .tile {
+    position: relative;
+    aspect-ratio: auto;
+  }
+
+  .tileVideo {
+    grid-row: 1 / span 2;
+    aspect-ratio: 9 / 16;
+  }
+
+  /* why: the two side photos take their height from the video's row span; in flow, their 1200×1500 images would stretch the rows instead */
+  .tileA .fill,
+  .tileB .fill {
+    position: absolute;
+    inset: 0;
+  }
+
+  .tileWide {
+    grid-column: 1 / -1;
+    aspect-ratio: 2 / 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watermark {
+    transform: none;
+  }
+
+  .tile:hover .fill img,
+  .tile:hover .fill video {
+    transform: none;
+  }
+}
