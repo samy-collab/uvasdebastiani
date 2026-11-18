@@ -1,0 +1,211 @@
+.widget {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-sm);
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 3.5rem;
+  padding: 0 1.15rem;
+  border: 2px solid var(--color-gold);
+  border-radius: var(--radius-pill);
+  background: var(--color-plum);
+  color: var(--color-on-dark);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 18px 32px -14px rgb(96 2 66 / 0.65);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s ease;
+}
+
+.toggle:hover {
+  background: var(--color-leaf);
+  transform: translateY(-2px);
+}
+
+.icon {
+  flex: none;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+/* why: on phones the label would cover content near the bottom edge, so only the round icon shows */
+@media (max-width: 40rem) {
+  .toggle {
+    width: 3.5rem;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .toggleLabel {
+    display: none;
+  }
+}
+
+.panel {
+  width: min(22rem, calc(100vw - 2rem));
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: 0 30px 60px -20px rgb(39 34 31 / 0.45);
+  transform-origin: bottom right;
+}
+
+.panel:focus {
+  outline: none;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-plum);
+  color: var(--color-on-dark);
+}
+
+.avatar {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.3rem;
+  border-radius: 50%;
+  background: var(--color-cream);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.status {
+  font-size: 0.8125rem;
+  color: var(--color-on-dark-muted);
+}
+
+.close {
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-on-dark);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.close:hover {
+  background: rgb(248 244 234 / 0.15);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background:
+    radial-gradient(circle at 10% 0%, rgb(199 154 92 / 0.15), transparent 60%),
+    var(--color-cream);
+}
+
+.bubble {
+  justify-self: start;
+  max-width: 90%;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0.25rem;
+  background: var(--color-surface);
+  box-shadow: 0 6px 16px -10px rgb(39 34 31 / 0.3);
+  font-size: var(--text-sm);
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.topic {
+  min-height: 2.25rem;
+  padding: 0.35rem 0.85rem;
+  border: 1px solid rgb(96 2 66 / 0.25);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-plum);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.topic:hover,
+.topic[aria-pressed='true'] {
+  background: var(--color-plum);
+  color: var(--color-on-dark);
+}
+
+.send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-height: 3.25rem;
+  margin: var(--space-md);
+  border-radius: var(--radius-pill);
+  background: var(--color-leaf);
+  color: var(--color-on-dark);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.send:hover {
+  background: var(--color-plum);
+}
+
+.widget :focus-visible {
+  outline-color: var(--color-gold);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .widget[data-open='true'] .panel {
+    animation: panel-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .toggle {
+    animation: toggle-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle:hover {
+    transform: none;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.9);
+  }
+}
+
+@keyframes toggle-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.7);
+  }
+}

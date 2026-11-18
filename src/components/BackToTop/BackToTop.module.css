@@ -16,6 +16,11 @@
     transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* why: the WhatsApp button sits in the same corner, so back-to-top moves up above it */
+.button[data-stacked='true'] {
+  bottom: calc(clamp(1rem, 3vw, 2rem) + 4.25rem);
+}
+
 .button[data-visible='false'] {
   opacity: 0;
   transform: translateY(1.5rem) scale(0.6);

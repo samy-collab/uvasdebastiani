@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { site } from '../../data/site';
 import styles from './BackToTop.module.css';
 
 const RADIUS = 22;
@@ -32,7 +33,7 @@ export function BackToTop() {
   }, []);
 
   return (
-    <a className={styles.button} href="#inicio" data-visible={visible}
+    <a className={styles.button} href="#inicio" data-visible={visible} data-stacked={Boolean(site.whatsapp)}
       tabIndex={visible ? 0 : -1}
       aria-hidden={!visible}
     >

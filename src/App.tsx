@@ -10,6 +10,7 @@ import { LocationSection } from './components/LocationSection/LocationSection';
 import { Marquee } from './components/Marquee/Marquee';
 import { OrganicSection } from './components/OrganicSection/OrganicSection';
 import { ProductsSection } from './components/ProductsSection/ProductsSection';
+import { WhatsAppWidget } from './components/WhatsAppWidget/WhatsAppWidget';
 import { grapeTypes } from './data/grapes';
 import { site } from './data/site';
 
@@ -51,6 +52,7 @@ export default function App() {
       </main>
       <Footer />
       <BackToTop />
+      <WhatsAppWidget />
     </>
   );
 }
