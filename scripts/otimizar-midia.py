@@ -48,6 +48,13 @@ PHOTOS = [
 ]
 PHOTO_WIDTHS = (1200, 640)
 
+# Fotos pequenas (capturas de tela): só cortadas, sem ampliar.
+# (arquivo de saída, origem, margens a cortar em px: esquerda, topo, direita, base)
+SMALL_PHOTOS = [
+    # why: the top 75 px of this Instagram capture hold the profile badge, not the photo
+    ('criancas-colheita', 'Screenshot From 2026-11-18 09-13-30.png', (0, 75, 0, 0)),
+]
+
 # (arquivo de saída, origem, início em segundos, duração máxima em segundos)
 VIDEOS = [
     ('hero-corredor', f'{MESA}/IMG_7791.MOV', 0, 7),
@@ -56,6 +63,10 @@ VIDEOS = [
     ('hero-familia', f'{MESA}/IMG_7821.MOV', 0, 7),
     ('hero-variedades', f'{MESA}/IMG_7779.MOV', 0, 5),
     ('hero-banca', f'{MESA}/IMG_7847.MOV', 0, 4),
+    ('criancas-uva', 'IMG_4403.mov', 0, 4),
+    ('criancas-cama-elastica', 'IMG_4407.MOV', 0, 6),
+    ('criancas-brincando', 'IMG_4541.MOV', 0, 6),
+    ('criancas-limonada', 'IMG_4507.MOV', 0, 6),
     ('mesa-cachos', f'{MESA}/IMG_7807.MOV', 0, 6),
     ('tradicionais-latada', 'IMG_4376.MOV', 0, 6),
     ('familia-colheita', f'{MESA}/IMG_7833.MOV', 0, 6),
@@ -87,6 +98,13 @@ def build_photos() -> None:
             suffix = '' if i == 0 else f'-{width}'
             resized = im.resize((width, round(width / ratio)), Image.Resampling.LANCZOS)
             resized.save(OUT / f'{name}{suffix}.webp', 'WEBP', quality=72, method=6)
+        print('foto ', name)
+    for name, rel, (left, top, right, bottom) in SMALL_PHOTOS:
+        if not REDO and (OUT / f'{name}.webp').exists():
+            continue
+        im = ImageOps.exif_transpose(Image.open(SRC / rel)).convert('RGB')
+        im.crop((left, top, im.width - right, im.height - bottom)).save(
+            OUT / f'{name}.webp', 'WEBP', quality=88, method=6)
         print('foto ', name)
 
 
