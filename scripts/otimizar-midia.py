@@ -27,15 +27,15 @@ PRODUTOS = 'Produtos'
 
 # (arquivo de saída, origem, proporção largura/altura, ponto focal vertical 0–1)
 PHOTOS = [
-    ('finas-preta-verde', f'{MESA}/IMG_7754.jpg', 4 / 5, 0.35),
-    ('finas-verde', f'{MESA}/IMG_7764.jpg', 4 / 5, 0.4),
-    ('finas-rosada', f'{MESA}/IMG_7776.jpg', 4 / 5, 0.35),
-    ('finas-preta', f'{MESA}/IMG_7813.jpg', 4 / 5, 0.45),
-    ('finas-corredor', f'{MESA}/IMG_7797.jpg', 4 / 5, 0.5),
-    ('rusticas-cachos', 'IMG_4357.jpg', 4 / 5, 0.3),
-    ('rusticas-pretas', 'IMG_4349.jpg', 4 / 5, 0.4),
-    ('rusticas-parreiral', 'IMG_4373.jpg', 4 / 5, 0.4),
-    ('rusticas-latada', 'IMG_4566.jpg', 4 / 5, 0.45),
+    ('mesa-preta-verde', f'{MESA}/IMG_7754.jpg', 4 / 5, 0.35),
+    ('mesa-verde', f'{MESA}/IMG_7764.jpg', 4 / 5, 0.4),
+    ('mesa-rosada', f'{MESA}/IMG_7776.jpg', 4 / 5, 0.35),
+    ('mesa-preta', f'{MESA}/IMG_7813.jpg', 4 / 5, 0.45),
+    ('mesa-corredor', f'{MESA}/IMG_7797.jpg', 4 / 5, 0.5),
+    ('tradicionais-cachos', 'IMG_4357.jpg', 4 / 5, 0.3),
+    ('tradicionais-pretas', 'IMG_4349.jpg', 4 / 5, 0.4),
+    ('tradicionais-parreiral', 'IMG_4373.jpg', 4 / 5, 0.4),
+    ('tradicionais-latada', 'IMG_4566.jpg', 4 / 5, 0.45),
     ('produto-caixa-uvas', f'{PRODUTOS}/IMG_5360.jpg', 4 / 5, 0.55),
     ('produto-suco', f'{PRODUTOS}/IMG_5351.jpg', 4 / 5, 0.5),
     ('produto-geleias', 'IMG_4416.jpg', 4 / 5, 0.6),
@@ -48,8 +48,8 @@ PHOTO_WIDTHS = (1200, 640)
 # (arquivo de saída, origem, início em segundos, duração máxima em segundos)
 VIDEOS = [
     ('hero-corredor', f'{MESA}/IMG_7791.MOV', 0, 7),
-    ('finas-cachos', f'{MESA}/IMG_7807.MOV', 0, 6),
-    ('rusticas-latada', 'IMG_4376.MOV', 0, 6),
+    ('mesa-cachos', f'{MESA}/IMG_7807.MOV', 0, 6),
+    ('tradicionais-latada', 'IMG_4376.MOV', 0, 6),
     ('familia-colheita', f'{MESA}/IMG_7833.MOV', 0, 6),
     ('colheita-mao', 'IMG_4557.MOV', 0, 6),
     ('colheita-caixas', 'IMG_4388.MOV', 0, 6),
