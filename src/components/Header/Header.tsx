@@ -65,8 +65,7 @@ export function Header() {
     >
       <div className={`container ${styles.bar}`}>
         <a className={styles.brand} href="#inicio" onClick={() => setMenuOpen(false)}>
-          <span className={styles.brandMark} aria-hidden="true" />
-          {site.name}
+          <img className={styles.logo} src="/brand/logo.webp" alt={site.name} width={900} height={335} />
         </a>
 
         <button

@@ -28,10 +28,9 @@
   gap: var(--space-xs);
 }
 
-.brand {
-  font-family: var(--font-display);
-  font-size: 1.625rem;
-  line-height: 1.15;
+.logo {
+  width: min(16rem, 100%);
+  height: auto;
 }
 
 .muted {
@@ -121,16 +120,6 @@
   background-size: 100% 100%;
 }
 
-.footerCluster {
-  /* why: the default dark berries and green leaf would vanish against the plum footer */
-  --berry-light: #e3b7d6;
-  --berry-mid: #a85f97;
-  --berry-dark: #6b3460;
-  --vine: #9fb58a;
-  flex: none;
-  width: clamp(5rem, 14vw, 9rem);
-}
-
 .list a {
   position: relative;
   transition:
@@ -142,12 +131,6 @@
   transform: translateX(6px);
   text-decoration: none;
   color: var(--color-gold);
-}
-
-@media (max-width: 30rem) {
-  .footerCluster {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

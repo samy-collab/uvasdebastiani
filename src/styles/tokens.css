@@ -1,8 +1,8 @@
 :root {
   /* Paleta */
   --color-cream: #f8f4ea;
-  --color-plum: #46243e;
-  --color-plum-strong: #351a2f;
+  --color-plum: #600242;
+  --color-plum-strong: #3d0129;
   --color-leaf: #3e573b;
   --color-sage: #e6ebdd;
   --color-gold: #c79a5c;
@@ -10,7 +10,7 @@
   --color-muted: #5b524c;
   --color-surface: #fffdf8;
   --color-on-dark: #f8f4ea;
-  --color-on-dark-muted: #e3d6dd;
+  --color-on-dark-muted: #e8d5df;
 
   /* Tipografia */
   --font-display: 'Baskervville', 'Georgia', 'Times New Roman', serif;
@@ -40,7 +40,7 @@
   --radius-md: 1rem;
   --radius-lg: 1.75rem;
   --radius-pill: 999px;
-  --shadow-soft: 0 1px 2px rgb(39 34 31 / 0.06), 0 12px 32px -12px rgb(70 36 62 / 0.18);
+  --shadow-soft: 0 1px 2px rgb(39 34 31 / 0.06), 0 12px 32px -12px rgb(96 2 66 / 0.18);
 
   --header-height: 4.5rem;
   --touch-target: 2.75rem;

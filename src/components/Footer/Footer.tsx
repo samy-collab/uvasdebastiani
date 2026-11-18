@@ -1,6 +1,5 @@
 import { imageCredits } from '../../data/images';
 import { getContactLinks, navLinks, site } from '../../data/site';
-import { GrapeCluster } from '../GrapeCluster/GrapeCluster';
 import { Reveal } from '../Reveal/Reveal';
 import styles from './Footer.module.css';
 
@@ -17,14 +16,11 @@ export function Footer() {
             Da parreira <em>à sua mesa</em>
           </p>
         </Reveal>
-        <Reveal variant="scale" delay={200} className={styles.footerCluster}>
-          <GrapeCluster />
-        </Reveal>
       </div>
 
       <div className={`container ${styles.grid}`}>
         <div className={styles.brandBlock}>
-          <p className={styles.brand}>{site.name}</p>
+          <img className={styles.logo} src="/brand/logo-claro.webp" alt={site.name} width={900} height={335} loading="lazy" />
           <p className={styles.muted}>
             {site.city}, {site.state}
           </p>
