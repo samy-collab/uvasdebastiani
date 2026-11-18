@@ -15,7 +15,9 @@ const DEFAULT_MESSAGE = 'Olá! Vim pelo site da De Bastiani.';
 export function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState(DEFAULT_MESSAGE);
+  const [topic, setTopic] = useState<number | null>(null);
   const panelId = useId();
+  const messageId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -70,21 +72,48 @@ export function WhatsAppWidget() {
             Olá! 🍇 Somos a família De Bastiani. Sobre o que você quer conversar?
           </p>
           <div className={styles.topics} role="group" aria-label="Assunto da mensagem">
-            {topics.map((topic) => (
+            {topics.map((item, index) => (
               <button
-                key={topic.label}
+                key={item.label}
                 type="button"
                 className={styles.topic}
-                aria-pressed={message === topic.message}
-                onClick={() => setMessage(topic.message)}
+                aria-pressed={topic === index}
+                onClick={() => {
+                  setTopic(index);
+                  setMessage(item.message);
+                }}
               >
-                {topic.label}
+                {item.label}
               </button>
             ))}
           </div>
+
+          {topic !== null && (
+            <div key={topic} className={styles.outgoing}>
+              <label className={styles.outgoingLabel} htmlFor={messageId}>
+                Você vai enviar (pode editar):
+              </label>
+              <textarea
+                id={messageId}
+                className={styles.outgoingText}
+                value={message}
+                rows={3}
+                onChange={(event) => setMessage(event.target.value)}
+              />
+            </div>
+          )}
         </div>
 
-        <a className={styles.send} href={href} target="_blank" rel="noopener noreferrer">
+        <a
+          className={styles.send}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-disabled={message.trim() === ''}
+          onClick={(event) => {
+            if (message.trim() === '') event.preventDefault();
+          }}
+        >
           <WhatsAppIcon />
           Conversar no WhatsApp
           <span className="visually-hidden"> (abre em nova aba)</span>
