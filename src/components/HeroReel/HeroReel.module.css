@@ -79,8 +79,12 @@
   position: relative;
   z-index: 2;
   display: grid;
-  gap: var(--space-sm);
-  margin-top: var(--space-sm);
+  justify-items: center;
+  gap: var(--space-xs);
+  width: fit-content;
+  max-width: min(100%, 22rem);
+  margin: var(--space-md) auto 0;
+  text-align: center;
   padding: var(--space-md) var(--space-lg);
   background: var(--color-surface);
   border-radius: var(--radius-md);
@@ -90,9 +94,9 @@
 .captionText {
   display: grid;
   gap: 0.15rem;
-  min-height: 3.2em;
+  min-height: 2.6em;
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   line-height: 1.25;
   color: var(--color-plum);
 }
@@ -109,7 +113,6 @@
 .dots {
   display: flex;
   gap: 0.15rem;
-  margin-left: -0.6rem;
 }
 
 /* why: the visible dot is 8px, but the button keeps a 44px hit area for touch */
@@ -145,16 +148,6 @@
 
 .dot:hover::before {
   background: var(--color-plum);
-}
-
-@media (min-width: 60rem) {
-  .caption {
-    position: absolute;
-    left: -5rem;
-    bottom: var(--space-2xl);
-    width: 20rem;
-    margin: 0;
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

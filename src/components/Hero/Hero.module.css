@@ -92,14 +92,13 @@
 
 .frame {
   position: relative;
-  border-radius: var(--radius-lg);
-  box-shadow: 0 40px 80px -40px rgb(96 2 66 / 0.55);
   transform: translate(calc(var(--px) * -8px), calc(var(--py) * -8px));
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .photo {
   aspect-ratio: 4 / 5;
+  box-shadow: 0 40px 80px -40px rgb(96 2 66 / 0.55);
 }
 
 .photo video {
@@ -220,12 +219,12 @@
   }
 
   .media {
-    width: min(100% - var(--space-lg), 75svh * 0.8);
+    width: min(100% - var(--space-lg), 64svh * 0.8);
   }
 
   .clusterWrap {
-    left: -4rem;
-    top: 18%;
+    left: -7rem;
+    top: 10%;
   }
 
   .scrollCue {
