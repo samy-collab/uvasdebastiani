@@ -5,7 +5,8 @@ Uso:
 
 A pasta original (fotos-videos-uvasdebastiani/) não vai para o git; o resultado
 fica em public/media/. Para trocar ou acrescentar uma mídia, edite as listas
-PHOTOS e VIDEOS abaixo e rode de novo.
+PHOTOS e VIDEOS abaixo e rode de novo. Arquivos já gerados são pulados; com
+REFAZER=1 tudo é gerado outra vez.
 Requer Pillow e um ffmpeg com libx264.
 """
 
@@ -20,6 +21,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'fotos-videos-uvasdebastiani'
 OUT = ROOT / 'public' / 'media'
 FFMPEG = os.environ.get('FFMPEG', 'ffmpeg')
+REDO = os.environ.get('REFAZER') == '1'
 
 MESA = 'Uvas de Mesa'
 FAMILIA = 'Fotos Família '  # invariant: the source folder name ends with a space
@@ -42,12 +44,18 @@ PHOTOS = [
     ('produto-kit', f'{PRODUTOS}/IMG_5330.jpg', 4 / 5, 0.5),
     ('familia', f'{FAMILIA}/IMG_4501.jpg', 4 / 5, 0.55),
     ('banca', f'{MESA}/IMG_7849.jpg', 4 / 5, 0.5),
+    ('organico-roseiras', f'{MESA}/IMG_7786.jpg', 4 / 5, 0.62),
 ]
 PHOTO_WIDTHS = (1200, 640)
 
 # (arquivo de saída, origem, início em segundos, duração máxima em segundos)
 VIDEOS = [
     ('hero-corredor', f'{MESA}/IMG_7791.MOV', 0, 7),
+    ('hero-organico', f'{MESA}/IMG_7785.MOV', 0, 6),
+    ('hero-cacho', f'{MESA}/IMG_7747.MOV', 0, 6),
+    ('hero-familia', f'{MESA}/IMG_7821.MOV', 0, 7),
+    ('hero-variedades', f'{MESA}/IMG_7779.MOV', 0, 5),
+    ('hero-banca', f'{MESA}/IMG_7847.MOV', 0, 4),
     ('mesa-cachos', f'{MESA}/IMG_7807.MOV', 0, 6),
     ('tradicionais-latada', 'IMG_4376.MOV', 0, 6),
     ('familia-colheita', f'{MESA}/IMG_7833.MOV', 0, 6),
@@ -72,6 +80,8 @@ def crop_to(im: Image.Image, ratio: float, focal_y: float) -> Image.Image:
 
 def build_photos() -> None:
     for name, rel, ratio, focal_y in PHOTOS:
+        if not REDO and (OUT / f'{name}.webp').exists():
+            continue
         im = crop_to(ImageOps.exif_transpose(Image.open(SRC / rel)).convert('RGB'), ratio, focal_y)
         for i, width in enumerate(PHOTO_WIDTHS):
             suffix = '' if i == 0 else f'-{width}'
@@ -82,6 +92,8 @@ def build_photos() -> None:
 
 def build_videos() -> None:
     for name, rel, start, duration in VIDEOS:
+        if not REDO and (OUT / f'{name}.mp4').exists():
+            continue
         src = str(SRC / rel)
         common = ['-nostdin', '-v', 'error', '-y', '-ss', str(start), '-i', src]
         scale = f'scale={VIDEO_WIDTH}:-2'
