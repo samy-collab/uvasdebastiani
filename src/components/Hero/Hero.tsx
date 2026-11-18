@@ -3,11 +3,20 @@ import { site } from '../../data/site';
 import { usePointerTilt } from '../../hooks/usePointerTilt';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 import { GrapeCluster } from '../GrapeCluster/GrapeCluster';
-import { LoopVideo } from '../LoopVideo/LoopVideo';
+import { HeroReel, type ReelClip } from '../HeroReel/HeroReel';
 import { SplitText } from '../SplitText/SplitText';
 import styles from './Hero.module.css';
 
-const STAMP_TEXT = `Uvas de mesa • Desde ${site.since} • ${site.city} • `;
+const STAMP_TEXT = `Cultivo orgânico • Desde ${site.since} • ${site.city} • `;
+
+const clips: ReelClip[] = [
+  { video: videos.hero, kicker: 'O parreiral', caption: 'Entre as fileiras, cachos prontos para a colheita' },
+  { video: videos.heroOrganico, kicker: 'Cultivo orgânico', caption: 'Uvas cultivadas no ritmo da natureza, entre roseiras' },
+  { video: videos.heroCacho, kicker: 'Uvas de mesa', caption: 'Cachos grandes, colhidos no ponto certo' },
+  { video: videos.heroFamilia, kicker: 'Nossa família', caption: `Cuidando de cada parreira desde ${site.since}` },
+  { video: videos.heroVariedades, kicker: 'Variedades', caption: 'Diversas variedades se revezam ao longo da safra' },
+  { video: videos.heroBanca, kicker: 'Na propriedade', caption: 'Uvas, sucos e geleias direto na nossa banca' },
+];
 
 export function Hero() {
   const sectionRef = usePointerTilt<HTMLElement>();
@@ -24,15 +33,15 @@ export function Hero() {
       <div className={`container ${styles.grid}`}>
         <div className={styles.content}>
           <p className={`eyebrow ${styles.enter}`} style={{ animationDelay: '0.1s' }}>
-            Desde {site.since} · {site.city}, {site.stateAbbr}
+            Cultivo orgânico · Desde {site.since} · {site.city}, {site.stateAbbr}
           </p>
           <h1 id="hero-title" className={styles.title}>
             <SplitText text="Da nossa parreira à sua mesa" delay={200} stagger={90} />
           </h1>
           <p className={`${styles.lead} ${styles.enter}`} style={{ animationDelay: '0.85s' }}>
-            Somos a família De Bastiani. Desde {site.since} cultivamos uvas de mesa e uvas
-            tradicionais em {site.city}, e levamos para a sua casa sucos, geleias e kits com a nossa
-            marca.
+            Somos a família De Bastiani. Desde {site.since} cultivamos, de forma orgânica, diversas
+            variedades de uva em {site.city}, e levamos para a sua casa sucos, geleias e kits com a
+            nossa marca.
           </p>
           <div className={`${styles.actions} ${styles.enter}`} style={{ animationDelay: '1.05s' }}>
             <a className="button button-primary" href="#produtos">
@@ -47,7 +56,7 @@ export function Hero() {
 
         <div ref={mediaRef} className={styles.media}>
           <div className={styles.frame}>
-            <LoopVideo video={videos.hero} className={styles.photo} priority />
+            <HeroReel clips={clips} stageClassName={styles.photo} />
           </div>
 
           <div className={styles.clusterWrap}>

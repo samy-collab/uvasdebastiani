@@ -1,0 +1,172 @@
+.reel {
+  position: relative;
+}
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: var(--color-plum-strong);
+  border-radius: var(--radius-lg);
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.video[data-active='true'] {
+  opacity: 1;
+}
+
+/* why: without this shade the white progress bar disappears against bright sky in the clips */
+.stage::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5rem;
+  background: linear-gradient(to bottom, rgb(39 34 31 / 0.35), transparent);
+  pointer-events: none;
+}
+
+.progress {
+  position: absolute;
+  z-index: 1;
+  top: var(--space-md);
+  left: var(--space-md);
+  right: var(--space-md);
+  display: flex;
+  gap: 0.35rem;
+}
+
+.segment {
+  --fill: 0;
+  position: relative;
+  flex: 1;
+  height: 3px;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 0.35);
+}
+
+.segment::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(var(--fill));
+  transform-origin: left;
+  transition: transform 0.3s linear;
+}
+
+.segment[data-state='done']::after {
+  transform: scaleX(1);
+  transition: none;
+}
+
+.segment[data-state='waiting']::after {
+  transform: scaleX(0);
+  transition: none;
+}
+
+.caption {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: var(--space-sm);
+  width: min(100% - 2rem, 20rem);
+  margin: calc(var(--space-2xl) * -1) auto 0;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 48px -24px rgb(96 2 66 / 0.45);
+}
+
+.captionText {
+  display: grid;
+  gap: 0.15rem;
+  min-height: 3.2em;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: var(--color-plum);
+}
+
+.kicker {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-leaf);
+}
+
+.dots {
+  display: flex;
+  gap: 0.15rem;
+  margin-left: -0.6rem;
+}
+
+/* why: the visible dot is 8px, but the button keeps a 44px hit area for touch */
+.dot {
+  position: relative;
+  width: var(--touch-target);
+  height: 1.75rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: var(--radius-pill);
+  background: rgb(96 2 66 / 0.25);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.35s ease,
+    background-color 0.35s ease;
+}
+
+.dot[aria-pressed='true']::before {
+  width: 1.5rem;
+  background: var(--color-plum);
+}
+
+.dot:hover::before {
+  background: var(--color-plum);
+}
+
+@media (min-width: 60rem) {
+  .caption {
+    position: absolute;
+    left: -5rem;
+    bottom: var(--space-2xl);
+    width: 20rem;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .captionText {
+    animation: caption-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+}
