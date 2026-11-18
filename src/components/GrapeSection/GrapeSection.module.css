@@ -146,14 +146,19 @@
   background: var(--color-gold);
 }
 
+.media {
+  min-width: 0;
+}
+
+.section[data-tone='dark'] .media {
+  --strip-controls-color: var(--color-on-dark);
+}
+
 .tile {
   aspect-ratio: 4 / 5;
 }
 
-.tileVideo {
-  aspect-ratio: 9 / 16;
-  align-self: start;
-}
+
 
 .fill {
   width: 100%;

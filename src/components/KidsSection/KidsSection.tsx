@@ -61,7 +61,7 @@ export function KidsSection() {
       </div>
 
       <div className="container">
-        <VideoReel items={reel} />
+        <VideoReel items={reel} label="vídeos das crianças" />
       </div>
     </section>
   );

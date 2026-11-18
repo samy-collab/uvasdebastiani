@@ -54,7 +54,7 @@ export function HarvestSection() {
       </div>
 
       <div className="container">
-        <VideoReel items={reel} />
+        <VideoReel items={reel} label="vídeos do dia de colheita" />
       </div>
     </section>
   );

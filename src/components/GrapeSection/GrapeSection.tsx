@@ -1,9 +1,11 @@
 import type { GrapeType } from '../../data/grapes';
+import { useRef } from 'react';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 import { NatureIcon } from '../NatureIcon/NatureIcon';
 import { LoopVideo } from '../LoopVideo/LoopVideo';
 import { Photo } from '../Photo/Photo';
 import { Reveal } from '../Reveal/Reveal';
+import { StripControls } from '../StripControls/StripControls';
 import styles from './GrapeSection.module.css';
 
 interface GrapeSectionProps {
@@ -15,6 +17,7 @@ interface GrapeSectionProps {
 export function GrapeSection({ grape, reversed = false }: GrapeSectionProps) {
   const sectionRef = useScrollProgress<HTMLElement>();
   const titleId = `${grape.id}-title`;
+  const stripRef = useRef<HTMLDivElement>(null);
   const [first, second, wide] = grape.photos;
 
   return (
@@ -72,19 +75,22 @@ export function GrapeSection({ grape, reversed = false }: GrapeSectionProps) {
           </Reveal>
         </div>
 
-        <div className={`snap-strip ${styles.collage}`}>
-          <Reveal variant="wipe" className={`${styles.tile} ${styles.tileVideo}`}>
-            <LoopVideo video={grape.video} className={styles.fill} />
-          </Reveal>
-          <Reveal variant="wipe" delay={120} className={`${styles.tile} ${styles.tileA}`}>
-            <Photo image={first} className={styles.fill} sizes="(min-width: 60rem) 18rem, 70vw" />
-          </Reveal>
-          <Reveal variant="wipe" delay={220} className={`${styles.tile} ${styles.tileB}`}>
-            <Photo image={second} className={styles.fill} sizes="(min-width: 60rem) 18rem, 70vw" />
-          </Reveal>
-          <Reveal variant="wipe" delay={320} className={`${styles.tile} ${styles.tileWide}`}>
-            <Photo image={wide} className={styles.fill} sizes="(min-width: 60rem) 36rem, 70vw" />
-          </Reveal>
+        <div className={styles.media}>
+          <div ref={stripRef} className={`snap-strip ${styles.collage}`}>
+            <Reveal variant="wipe" className={`${styles.tile} ${styles.tileVideo}`}>
+              <LoopVideo video={grape.video} className={styles.fill} />
+            </Reveal>
+            <Reveal variant="wipe" delay={120} className={`${styles.tile} ${styles.tileA}`}>
+              <Photo image={first} className={styles.fill} sizes="(min-width: 60rem) 18rem, 70vw" />
+            </Reveal>
+            <Reveal variant="wipe" delay={220} className={`${styles.tile} ${styles.tileB}`}>
+              <Photo image={second} className={styles.fill} sizes="(min-width: 60rem) 18rem, 70vw" />
+            </Reveal>
+            <Reveal variant="wipe" delay={320} className={`${styles.tile} ${styles.tileWide}`}>
+              <Photo image={wide} className={styles.fill} sizes="(min-width: 60rem) 36rem, 70vw" />
+            </Reveal>
+          </div>
+          <StripControls stripRef={stripRef} count={4} itemLabel={`fotos de ${grape.title.toLowerCase()}`} />
         </div>
       </div>
     </section>

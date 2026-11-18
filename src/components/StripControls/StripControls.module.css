@@ -1,0 +1,61 @@
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  color: var(--strip-controls-color, var(--color-plum));
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  background: rgb(127 127 127 / 0.15);
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: var(--radius-pill);
+  background: currentColor;
+  opacity: 0.3;
+  transition:
+    width 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.dot[data-active='true'] {
+  width: 1.25rem;
+  opacity: 1;
+}
+
+/* why: on wide screens the items sit side by side in a grid, so there is nothing to scroll */
+@media (min-width: 60rem) {
+  .controls {
+    display: none;
+  }
+}
