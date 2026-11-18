@@ -43,7 +43,7 @@ export const site: SiteInfo = {
   mapEmbedUrl:
     'https://www.google.com/maps?q=Uvas+De+Bastiani,+Serafina+Corr%C3%AAa+-+RS&z=14&output=embed',
   openingHours: undefined,
-  whatsapp: undefined,
+  whatsapp: '5554999142536',
   instagram: 'debastianiuvas',
 };
 
