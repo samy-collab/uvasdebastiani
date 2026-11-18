@@ -52,21 +52,21 @@ function video(name: string, label: string): SiteVideo {
 }
 
 export const images = {
-  mesaPretaVerde: photo(
-    'mesa-preta-verde',
-    'Cacho de uva preta pendurado na parreira, ao lado de cachos de uva verde',
+  mesaParreira: photo(
+    'mesa-parreira',
+    'Cachos de uva de mesa de variedades diferentes pendurados lado a lado na parreira',
     '50% 40%',
   ),
-  mesaVerde: photo('mesa-verde', 'Cachos grandes de uva verde e um cacho de uva preta sob a parreira'),
-  mesaRosada: photo('mesa-rosada', 'Cacho de uva rosada de bagas alongadas preso ao arame da parreira', '60% 60%'),
-  mesaPreta: photo('mesa-preta', 'Cachos de uva preta pendurados na parreira, com as fileiras ao fundo'),
+  mesaCachosGrandes: photo('mesa-cachos-grandes', 'Cachos grandes de uva de mesa pendurados sob a parreira'),
+  mesaBagasAlongadas: photo('mesa-bagas-alongadas', 'Cacho de uva de mesa de bagas alongadas preso ao arame da parreira', '60% 60%'),
+  mesaFileiras: photo('mesa-fileiras', 'Cachos de uva de mesa pendurados na parreira, com as fileiras ao fundo'),
   mesaCorredor: photo(
     'mesa-corredor',
-    'Corredor entre fileiras de parreiras carregadas de cachos verdes, sob cobertura plástica',
+    'Corredor entre fileiras de parreiras carregadas de cachos, sob cobertura plástica',
   ),
-  tradicionaisCachos: photo('tradicionais-cachos', 'Cachos de uva rosada de bagas redondas pendurados na latada'),
-  tradicionaisPretas: photo('tradicionais-pretas', 'Cachos de uva escura de bagas redondas entre folhas de parreira'),
-  tradicionaisParreiral: photo('tradicionais-parreiral', 'Fileira de latada coberta de cachos rosados, vista de baixo'),
+  tradicionaisCachos: photo('tradicionais-cachos', 'Cachos de uva tradicional de bagas redondas pendurados na latada'),
+  tradicionaisFolhas: photo('tradicionais-folhas', 'Cachos de uva tradicional de bagas redondas entre folhas de parreira'),
+  tradicionaisParreiral: photo('tradicionais-parreiral', 'Fileira de latada coberta de cachos, vista de baixo'),
   tradicionaisLatada: photo(
     'tradicionais-latada',
     'Latada com dezenas de cachos maduros pendurados em linha',
@@ -74,7 +74,7 @@ export const images = {
   ),
   produtoCaixaUvas: photo(
     'produto-caixa-uvas',
-    'Caixa de papelão com dois cachos de uva, um verde e um rosado',
+    'Caixa de papelão com dois cachos de uva de mesa',
     '50% 55%',
   ),
   produtoSuco: photo(
@@ -84,7 +84,7 @@ export const images = {
   ),
   produtoGeleias: photo(
     'produto-geleias',
-    'Potes de geleia De Bastiani, um escuro e um dourado, ao lado de garrafas de suco',
+    'Potes de geleia De Bastiani ao lado de garrafas de suco',
     '50% 70%',
   ),
   produtoKit: photo(
@@ -94,15 +94,25 @@ export const images = {
   ),
   familia: photo('familia', 'A família De Bastiani reunida no gramado, em frente ao parreiral coberto', '50% 55%'),
   banca: photo('banca', 'Banca da propriedade com garrafas de suco, potes de geleia e cestas de uva na prateleira'),
+  organicoRoseiras: photo(
+    'organico-roseiras',
+    'Roseiras floridas na cabeceira das fileiras de parreiras cobertas, sob céu azul',
+    '50% 60%',
+  ),
 } satisfies Record<string, SiteImage>;
 
 export const videos = {
   hero: video('hero-corredor', 'Caminhada entre as fileiras de parreiras carregadas de uvas'),
-  mesa: video('mesa-cachos', 'Cachos de uva preta pendurados na parreira'),
-  tradicionais: video('tradicionais-latada', 'Latada repleta de cachos de uva rosada'),
-  familia: video('familia-colheita', 'Colheita de um cacho de uva verde com tesoura, direto da parreira'),
+  heroOrganico: video('hero-organico', 'Roseiras floridas em frente às fileiras de parreiras cobertas'),
+  heroCacho: video('hero-cacho', 'Cachos grandes de uva de mesa pendurados na parreira'),
+  heroFamilia: video('hero-familia', 'Integrante da família De Bastiani entre as roseiras e o parreiral'),
+  heroVariedades: video('hero-variedades', 'Cacho de uva de mesa de bagas alongadas, de perto'),
+  heroBanca: video('hero-banca', 'Banca da propriedade com sucos, geleias e uvas'),
+  mesa: video('mesa-cachos', 'Cachos de uva de mesa pendurados na parreira'),
+  tradicionais: video('tradicionais-latada', 'Latada repleta de cachos de uva tradicional'),
+  familia: video('familia-colheita', 'Colheita de um cacho de uva com tesoura, direto da parreira'),
   colheitaMao: video('colheita-mao', 'Mão de um visitante colhendo um cacho de uva na latada'),
-  colheitaCaixas: video('colheita-caixas', 'Caixas cheias de uvas verdes e rosadas sobre toalha xadrez'),
+  colheitaCaixas: video('colheita-caixas', 'Caixas cheias de uvas sobre toalha xadrez'),
   colheitaMesa: video('colheita-mesa', 'Mesa com toalha xadrez, jarras de limonada e uma caixa de frutas'),
   colheitaLatada: video('colheita-latada', 'Cachos maduros pendurados na latada no dia de colheita'),
 } satisfies Record<string, SiteVideo>;

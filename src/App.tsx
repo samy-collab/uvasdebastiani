@@ -8,6 +8,7 @@ import { Header } from './components/Header/Header';
 import { Hero } from './components/Hero/Hero';
 import { LocationSection } from './components/LocationSection/LocationSection';
 import { Marquee } from './components/Marquee/Marquee';
+import { OrganicSection } from './components/OrganicSection/OrganicSection';
 import { ProductsSection } from './components/ProductsSection/ProductsSection';
 import { grapeTypes } from './data/grapes';
 import { site } from './data/site';
@@ -15,6 +16,7 @@ import { site } from './data/site';
 const highlights = [
   'Uvas de mesa',
   'Uvas tradicionais',
+  'Cultivo orgânico',
   'Sucos',
   'Geleias',
   'Kits presente',
@@ -41,6 +43,7 @@ export default function App() {
         {grapeTypes.map((grape, index) => (
           <GrapeSection key={grape.id} grape={grape} reversed={index % 2 === 1} />
         ))}
+        <OrganicSection />
         <ProductsSection />
         <HarvestSection />
         <AboutSection />

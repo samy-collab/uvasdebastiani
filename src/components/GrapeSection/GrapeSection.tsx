@@ -1,6 +1,6 @@
-import type { CSSProperties } from 'react';
 import type { GrapeType } from '../../data/grapes';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
+import { LeafIcon } from '../LeafIcon/LeafIcon';
 import { LoopVideo } from '../LoopVideo/LoopVideo';
 import { Photo } from '../Photo/Photo';
 import { Reveal } from '../Reveal/Reveal';
@@ -50,18 +50,14 @@ export function GrapeSection({ grape, reversed = false }: GrapeSectionProps) {
           </Reveal>
 
           <Reveal delay={320}>
-            <p className={styles.label} id={`${grape.id}-cores`}>
-              Cores
+            <p className={styles.label} id={`${grape.id}-cultivo`}>
+              Cultivo
             </p>
-            <ul className={styles.colors} aria-labelledby={`${grape.id}-cores`}>
-              {grape.colors.map((color) => (
-                <li key={color.name} className={styles.color}>
-                  <span
-                    className={styles.swatch}
-                    style={{ '--swatch': color.swatch } as CSSProperties}
-                    aria-hidden="true"
-                  />
-                  {color.name}
+            <ul className={styles.practices} aria-labelledby={`${grape.id}-cultivo`}>
+              {grape.practices.map((practice) => (
+                <li key={practice} className={styles.practice}>
+                  <LeafIcon className={styles.icon} />
+                  {practice}
                 </li>
               ))}
             </ul>

@@ -91,29 +91,33 @@
   color: var(--section-muted);
 }
 
-.colors {
+.practices {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
 }
 
-.color {
+.practice {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  padding: 0.4rem 0.95rem 0.4rem 0.45rem;
+  padding: 0.4rem 0.95rem 0.4rem 0.6rem;
   border: 1px solid var(--section-line);
   border-radius: var(--radius-pill);
   font-weight: 600;
 }
 
-.swatch {
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 30%, rgb(255 255 255 / 0.55), transparent 45%), var(--swatch);
-  box-shadow: inset 0 -3px 6px rgb(0 0 0 / 0.25);
+.practice:first-child {
+  border-color: transparent;
+  background: var(--color-leaf);
+  color: var(--color-on-dark);
+}
+
+.icon {
+  flex: none;
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 .traits {

@@ -1,18 +1,13 @@
 import { images, videos, type SiteImage, type SiteVideo } from './images';
 
-export interface GrapeColor {
-  name: string;
-  /** Cor da amostra redonda ao lado do nome. */
-  swatch: string;
-}
-
 export interface GrapeType {
   id: string;
   eyebrow: string;
   title: string;
   lead: string;
   paragraphs: string[];
-  colors: GrapeColor[];
+  /** Selos do cultivo, mostrados como etiquetas abaixo do texto. */
+  practices: string[];
   traits: string[];
   video: SiteVideo;
   /** Três fotos: a primeira ao lado do vídeo, no alto; a terceira ocupa a faixa de baixo. */
@@ -24,39 +19,32 @@ export interface GrapeType {
 export const grapeTypes: GrapeType[] = [
   {
     id: 'uvas-de-mesa',
-    eyebrow: 'Nossas uvas · 01',
+    eyebrow: 'Nossas uvas',
     title: 'Uvas de mesa',
-    lead: 'Cachos grandes, de bagas firmes e alongadas, em verde, rosado e preto.',
+    lead: 'Cachos grandes e bagas firmes e alongadas, de diversas variedades que se revezam ao longo da safra.',
     paragraphs: [
-      'Cultivamos as uvas de mesa sob cobertura plástica, que protege os cachos da chuva e do granizo desde a flor até a colheita.',
+      'Cultivamos as uvas de mesa de forma orgânica, sob cobertura plástica, que protege os cachos da chuva e do granizo desde a flor até a colheita.',
       'Cada cacho é acompanhado na parreira e colhido à mão, com tesoura, quando chega ao ponto certo.',
     ],
-    colors: [
-      { name: 'Verdes', swatch: '#b8c76a' },
-      { name: 'Rosadas', swatch: '#c9707c' },
-      { name: 'Pretas', swatch: '#3a2140' },
-    ],
-    traits: ['Bagas grandes e alongadas', 'Cultivo protegido, sob cobertura', 'Colhidas à mão, no ponto'],
+    practices: ['Cultivo orgânico', 'Sob cobertura', 'Colheita manual'],
+    traits: ['Diversas variedades ao longo da safra', 'Bagas firmes e alongadas', 'Colhidas no ponto, direto da parreira'],
     video: videos.mesa,
-    photos: [images.mesaRosada, images.mesaVerde, images.mesaCorredor],
+    photos: [images.mesaBagasAlongadas, images.mesaCachosGrandes, images.mesaCorredor],
     tone: 'dark',
   },
   {
     id: 'uvas-tradicionais',
-    eyebrow: 'Nossas uvas · 02',
+    eyebrow: 'Nossas uvas',
     title: 'Uvas tradicionais',
     lead: 'Bagas redondas, cachos compactos e o sabor de uva que marca a Serra Gaúcha.',
     paragraphs: [
-      'As uvas tradicionais crescem na latada, o jeito mais antigo de conduzir a parreira na região, com os cachos pendurados ao alcance da mão.',
+      'As uvas tradicionais crescem de forma orgânica na latada, o jeito mais antigo de conduzir a parreira na região, com os cachos pendurados ao alcance da mão.',
       'São elas que enchem as caixas nos dias de colheita, para comer na hora e levar para casa.',
     ],
-    colors: [
-      { name: 'Rosadas', swatch: '#b0707e' },
-      { name: 'Escuras', swatch: '#4a3550' },
-    ],
-    traits: ['Bagas redondas e cachos compactos', 'Cultivadas em latada', 'Para comer frescas, direto do cacho'],
+    practices: ['Cultivo orgânico', 'Em latada', 'Colheita manual'],
+    traits: ['Bagas redondas e cachos compactos', 'Variedades típicas da Serra Gaúcha', 'Para comer frescas, direto do cacho'],
     video: videos.tradicionais,
-    photos: [images.tradicionaisCachos, images.tradicionaisPretas, images.tradicionaisLatada],
+    photos: [images.tradicionaisCachos, images.tradicionaisFolhas, images.tradicionaisLatada],
     tone: 'light',
   },
 ];

@@ -29,13 +29,13 @@ PRODUTOS = 'Produtos'
 
 # (arquivo de saída, origem, proporção largura/altura, ponto focal vertical 0–1)
 PHOTOS = [
-    ('mesa-preta-verde', f'{MESA}/IMG_7754.jpg', 4 / 5, 0.35),
-    ('mesa-verde', f'{MESA}/IMG_7764.jpg', 4 / 5, 0.4),
-    ('mesa-rosada', f'{MESA}/IMG_7776.jpg', 4 / 5, 0.35),
-    ('mesa-preta', f'{MESA}/IMG_7813.jpg', 4 / 5, 0.45),
+    ('mesa-parreira', f'{MESA}/IMG_7754.jpg', 4 / 5, 0.35),
+    ('mesa-cachos-grandes', f'{MESA}/IMG_7764.jpg', 4 / 5, 0.4),
+    ('mesa-bagas-alongadas', f'{MESA}/IMG_7776.jpg', 4 / 5, 0.35),
+    ('mesa-fileiras', f'{MESA}/IMG_7813.jpg', 4 / 5, 0.45),
     ('mesa-corredor', f'{MESA}/IMG_7797.jpg', 4 / 5, 0.5),
     ('tradicionais-cachos', 'IMG_4357.jpg', 4 / 5, 0.3),
-    ('tradicionais-pretas', 'IMG_4349.jpg', 4 / 5, 0.4),
+    ('tradicionais-folhas', 'IMG_4349.jpg', 4 / 5, 0.4),
     ('tradicionais-parreiral', 'IMG_4373.jpg', 4 / 5, 0.4),
     ('tradicionais-latada', 'IMG_4566.jpg', 4 / 5, 0.45),
     ('produto-caixa-uvas', f'{PRODUTOS}/IMG_5360.jpg', 4 / 5, 0.55),

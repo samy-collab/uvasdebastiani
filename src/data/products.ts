@@ -23,7 +23,7 @@ export const products: Product[] = [
     id: 'uvas',
     title: 'Uvas em caixa',
     description:
-      'Cachos de uvas de mesa e tradicionais, colhidos no ponto e acomodados em caixas para levar para casa ou presentear.',
+      'Cachos de diversas variedades, colhidos no ponto e acomodados em caixas para levar para casa ou presentear.',
     image: images.produtoCaixaUvas,
     itemsLabel: 'Variedades',
     items: [],

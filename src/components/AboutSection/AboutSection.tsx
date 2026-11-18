@@ -47,8 +47,8 @@ export function AboutSection() {
           {/* A história da propriedade entra aqui, em novos parágrafos <p>. */}
           <Reveal delay={200} className={styles.text}>
             <p>
-              Somos a família De Bastiani. Desde {site.since} cultivamos uvas em {site.city}, no{' '}
-              {site.state}, com o cuidado de quem trabalha a terra em família.
+              Somos a família De Bastiani. Desde {site.since} cultivamos uvas de forma orgânica em{' '}
+              {site.city}, no {site.state}, com o cuidado de quem trabalha a terra em família.
             </p>
             <p>
               Cuidamos das parreiras ao longo do ano, colhemos os cachos à mão e levamos até a sua
@@ -62,12 +62,12 @@ export function AboutSection() {
                 <dd>{site.since}</dd>
               </div>
               <div>
-                <dt>Tipos de uva</dt>
-                <dd>2</dd>
+                <dt>Cultivo</dt>
+                <dd>Orgânico</dd>
               </div>
               <div>
-                <dt>Cores de uva de mesa</dt>
-                <dd>3</dd>
+                <dt>Colheita</dt>
+                <dd>À mão</dd>
               </div>
             </dl>
           </Reveal>
