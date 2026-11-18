@@ -95,7 +95,14 @@
   }
 }
 
-/* ---------- mapa ilustrado: curvas de nível, estrada e alfinete pulsando ---------- */
+.easy {
+  max-width: 34rem;
+  color: var(--color-muted);
+}
+
+.easy strong {
+  color: var(--color-plum);
+}
 
 .mapWrap {
   align-self: stretch;
@@ -103,65 +110,13 @@
 }
 
 .map {
-  --px: 0;
-  --py: 0;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 16 / 10;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: 0;
   border-radius: var(--radius-lg);
-  background:
-    radial-gradient(circle at 50% 50%, rgb(199 154 92 / 0.25), transparent 60%),
-    var(--color-sage);
-}
-
-.contours {
-  position: absolute;
-  inset: -6%;
-  width: 112%;
-  height: 112%;
-  fill: none;
-  stroke: rgb(62 87 59 / 0.28);
-  stroke-width: 1.5;
-  transform: translate(calc(var(--px) * -10px), calc(var(--py) * -10px));
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.road {
-  stroke: var(--color-gold);
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke-dasharray: 2 10;
-}
-
-.mapPin {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: grid;
-  place-items: center;
-  width: 3.25rem;
-  height: 3.25rem;
-  border-radius: 50% 50% 50% 0;
-  background: var(--color-plum);
-  box-shadow: 0 14px 24px -10px rgb(96 2 66 / 0.7);
-  transform: translate(-50%, -100%) rotate(-45deg);
-}
-
-.mapPin svg {
-  color: var(--color-gold);
-  transform: rotate(45deg);
-}
-
-.pulse {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 3rem;
-  height: 1.25rem;
-  border-radius: 50%;
-  border: 2px solid var(--color-plum);
-  transform: translate(-50%, -50%);
-  opacity: 0;
+  background: var(--color-sage);
+  box-shadow: var(--shadow-soft);
 }
 
 /* ---------- botões e card ---------- */
@@ -179,53 +134,8 @@
     0 40px 60px -30px rgb(96 2 66 / 0.4);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .road {
-    animation: march 1.6s linear infinite;
-  }
-
-  .pulse {
-    animation: pulse 2.6s ease-out infinite;
-  }
-
-  .pulse:nth-of-type(2) {
-    animation-delay: 1.3s;
-  }
-
-  [data-visible='true'] .mapPin {
-    animation: drop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s both;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .card:hover {
     transform: none;
-  }
-}
-
-@keyframes march {
-  to {
-    stroke-dashoffset: -24;
-  }
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(0.6);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(4);
-  }
-}
-
-@keyframes drop {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -260%) rotate(-45deg);
-  }
-  60% {
-    opacity: 1;
   }
 }

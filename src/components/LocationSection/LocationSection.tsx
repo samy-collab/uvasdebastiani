@@ -1,11 +1,9 @@
 import { getContactLinks, site } from '../../data/site';
-import { usePointerTilt } from '../../hooks/usePointerTilt';
 import { Reveal } from '../Reveal/Reveal';
 import styles from './LocationSection.module.css';
 
 export function LocationSection() {
   const contacts = getContactLinks().filter((contact) => contact.label !== 'Google');
-  const mapRef = usePointerTilt<HTMLDivElement>();
 
   return (
     <section id="localizacao" className={styles.section} aria-labelledby="localizacao-title">
@@ -28,22 +26,26 @@ export function LocationSection() {
             </p>
           </Reveal>
 
-          <Reveal variant="scale" delay={250} className={styles.mapWrap}>
-            <div ref={mapRef} className={styles.map} aria-hidden="true">
-              <svg className={styles.contours} viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice">
-                <path d="M-20 60 C 80 20, 160 90, 260 50 S 380 10, 420 40" />
-                <path d="M-20 110 C 90 70, 170 140, 270 100 S 390 60, 420 90" />
-                <path d="M-20 160 C 100 120, 180 190, 280 150 S 400 110, 420 140" />
-                <path d="M-20 210 C 110 170, 190 240, 290 200 S 410 160, 420 190" />
-                <path className={styles.road} d="M-10 240 C 80 200, 120 150, 200 130" />
-              </svg>
-              <span className={styles.pulse} />
-              <span className={styles.pulse} />
-              <span className={styles.mapPin}>
-                <PinIcon />
-              </span>
-            </div>
+          <Reveal delay={240}>
+            <p className={styles.easy}>
+              <strong>Fácil de chegar.</strong> Estamos na localidade de Aparecida, a poucos minutos do
+              centro de {site.city}. Siga o mapa ou toque em “Traçar rota” para abrir o caminho direto
+              no seu celular.
+            </p>
           </Reveal>
+
+          {site.mapEmbedUrl && (
+            <Reveal variant="scale" delay={300} className={styles.mapWrap}>
+              <iframe
+                className={styles.map}
+                src={site.mapEmbedUrl}
+                title={`Mapa com a localização da ${site.name} em ${site.city}`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </Reveal>
+          )}
         </div>
 
         <Reveal variant="right" delay={150}>

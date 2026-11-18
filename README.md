@@ -17,7 +17,9 @@ npm run lint     # oxlint
 | O quê | Arquivo |
 |---|---|
 | Nome, cidade, ano de início, endereço, rota, horários, WhatsApp, Instagram, link do Google | `src/data/site.ts` |
-| Seções de uva (uvas de mesa e tradicionais): textos, cores, características, fotos e vídeo | `src/data/grapes.ts` |
+| Seções de uva (uvas de mesa e tradicionais): textos, selos de cultivo, características, fotos e vídeo | `src/data/grapes.ts` |
+| Vídeos e legendas da sequência do topo | `src/components/Hero/Hero.tsx` (lista `clips`) |
+| Cultivo orgânico | `src/components/OrganicSection/OrganicSection.tsx` |
 | Produtos: descrições, sabores, embalagens | `src/data/products.ts` (campo `items`) |
 | Fotos e vídeos: caminho, texto alternativo, ponto focal | `src/data/images.ts` |
 | Dia de colheita | `src/components/HarvestSection/HarvestSection.tsx` |

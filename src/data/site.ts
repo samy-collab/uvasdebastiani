@@ -20,6 +20,8 @@ export interface SiteInfo {
   address?: string;
   /** Link de rota (Google Maps). */
   directionsUrl?: string;
+  /** Endereço do mapa incorporado na seção Localização (Google Maps com `output=embed`). */
+  mapEmbedUrl?: string;
   /** Uma linha por faixa de horário, ex.: "Segunda a sábado, 8h às 18h". */
   openingHours?: string[];
   /** Somente dígitos, com DDI e DDD, ex.: "5554999999999". */
@@ -35,8 +37,11 @@ export const site: SiteInfo = {
   stateAbbr: 'RS',
   since: 2010,
   googleProfileUrl: 'https://www.google.com/search?kgmid=%2Fg%2F11yw2pnpts',
-  address: undefined,
-  directionsUrl: undefined,
+  address: 'Aparecida, Serafina Corrêa – RS, 99250-000',
+  // invariant: these coordinates are the pin of the De Bastiani listing on Google Maps
+  directionsUrl: 'https://www.google.com/maps/dir/?api=1&destination=-28.6851046,-51.9398805',
+  mapEmbedUrl:
+    'https://www.google.com/maps?q=Uvas+De+Bastiani,+Serafina+Corr%C3%AAa+-+RS&z=14&output=embed',
   openingHours: undefined,
   whatsapp: undefined,
   instagram: 'debastianiuvas',
@@ -45,6 +50,7 @@ export const site: SiteInfo = {
 export const navLinks: NavLink[] = [
   { label: 'Uvas de mesa', href: '#uvas-de-mesa' },
   { label: 'Tradicionais', href: '#uvas-tradicionais' },
+  { label: 'Orgânico', href: '#cultivo-organico' },
   { label: 'Produtos', href: '#produtos' },
   { label: 'Colheita', href: '#colheita' },
   { label: 'Família', href: '#familia' },
